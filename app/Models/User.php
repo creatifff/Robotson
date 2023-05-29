@@ -65,7 +65,7 @@ class User extends Authenticatable
     // Дата регистрации пользователя
     public function createdDate()
     {
-        return date('d:m:Y', strtotime($this->created_at));
+        return date('d.m.Y', strtotime($this->created_at));
     }
 
 }

@@ -44,19 +44,6 @@ Route::group([
 });
 
 
-Route::group([
-    'controller' => ProductController::class,
-    'as' => 'product.',
-    'prefix' => '/product'
-], function () {
-    Route::group([
-        'middleware' => ['auth', AdminMiddleware::class]
-    ], function () {
-        Route::post('/create', 'createProduct')->name('createProduct');
-    });
-});
-
-
 // Страницы и функции в админке
 Route::group([
     'controller' => AdminController::class,
@@ -70,6 +57,10 @@ Route::group([
     Route::get('/product/create', 'createProduct')->name('createProduct');
     // Страница с формой добавления категории
     Route::get('/collection/create', 'createCollection')->name('createCollection');
+    // Страница с пользователями
+    Route::get('/users', 'showUsers')->name('showUsers');
+    // Страница с продуктами
+    Route::get('/products', 'showProducts')->name('showProducts');
 
     // Контроллер продукта
     Route::group([
@@ -77,7 +68,10 @@ Route::group([
         'as' => 'product.',
         'prefix' => '/product'
     ], function () {
+        // добавить
         Route::post('/create', 'createProduct')->name('createProduct');
+        // редактировать
+        Route::post('/update/{product:id}', 'updateProduct')->name('updateProduct')->where('id', '[0-9]*');
     });
 
     // Контроллер категории
@@ -86,6 +80,19 @@ Route::group([
         'as' => 'collection.',
         'prefix' => '/collection'
     ], function () {
+        // добавить
        Route::post('/create', 'createCollection')->name('createCollection');
     });
+});
+
+
+
+// Контроллер продукта
+Route::group([
+    'controller' => ProductController::class,
+    'as' => 'product.',
+    'prefix' => '/product'
+], function () {
+    // Страница одного продукта
+    Route::get('/{product:id}', 'show')->name('show')->where('id', '[0-9]*');
 });

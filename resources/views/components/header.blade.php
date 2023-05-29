@@ -75,8 +75,8 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ route('admin.index') }}">Главная</a></li>
                                 <li><a class="dropdown-item" href="#">Мои данные</a></li>
-                                <li><a class="dropdown-item" href="#">Все продукты</a></li>
-                                <li><a class="dropdown-item" href="#">Все пользователи</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.showProducts') }}">Все продукты</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.showUsers') }}">Все пользователи</a></li>
                                 <li><a class="dropdown-item" href="#">Заказы</a></li>
                                 <li>
                                     <hr class="dropdown-divider">

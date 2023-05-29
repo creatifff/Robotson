@@ -47,11 +47,11 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('admin.createProduct') }}">Добавить продукт</a></li>
-                        <li><a class="dropdown-item" href="#">Добавить категорию</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.createCollection') }}">Добавить категорию</a></li>
                     </ul>
                 </div>
-                <a href="#" class="profile__menu-btn">Список продуктов</a>
-                <a href="#" class="profile__menu-btn">Список пользователей</a>
+                <a href="{{ route('admin.showProducts') }}" class="profile__menu-btn">Список продуктов</a>
+                <a href="{{ route('admin.showUsers') }}" class="profile__menu-btn">Список пользователей</a>
                 <a href="#" class="profile__menu-btn">Заказы</a>
                 <hr>
                 <a href="{{ route('auth.logoutUser') }}" class="profile__menu-btn">Выйти</a>
