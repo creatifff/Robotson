@@ -26,6 +26,6 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('admin.admin')->with(['message' => "Товар \"$product->name\" успешно добавлен!"]);
+        return redirect()->route('admin.index')->with(['message' => "Продукт \"$product->name\" успешно добавлен!"]);
     }
 }

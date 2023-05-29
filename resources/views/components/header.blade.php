@@ -48,19 +48,43 @@
                     </div>
                 @endguest
                 @auth
-                    <div class="dropdown">
-                        <button class="header__nav-btn" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
-                            <img class="user-img" src="{{ auth()->user()->imageUrl() }}" alt="user-img">
-                            <span class="header__nav-btn__name">Кабинет</span>
-                        </button>
-
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Главная</a></li>
-                            <li><a class="dropdown-item" href="#">Мои данные</a></li>
-                            <li><a class="dropdown-item" href="#">Мои заказы</a></li>
-                            <li><a class="dropdown-item" href="{{ route('auth.logoutUser') }}">Выйти</a></li>
-                        </ul>
-                    </div>
+                    @if(auth()->user()->role === 'user')
+                        <div class="dropdown">
+                            <button class="header__nav-btn" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown">
+                                <img class="user-img" src="{{ auth()->user()->imageUrl() }}" alt="user-img">
+                                <span class="header__nav-btn__name">Кабинет</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Главная</a></li>
+                                <li><a class="dropdown-item" href="#">Личные данные</a></li>
+                                <li><a class="dropdown-item" href="#">Мои заказы</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('auth.logoutUser') }}">Выйти</a></li>
+                            </ul>
+                        </div>
+                    @else
+                        <div class="dropdown">
+                            <button class="header__nav-btn" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown">
+                                <img class="user-img" src="{{ auth()->user()->imageUrl() }}" alt="user-img">
+                                <span class="header__nav-btn__name">Админ панель</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{ route('admin.index') }}">Главная</a></li>
+                                <li><a class="dropdown-item" href="#">Мои данные</a></li>
+                                <li><a class="dropdown-item" href="#">Все продукты</a></li>
+                                <li><a class="dropdown-item" href="#">Все пользователи</a></li>
+                                <li><a class="dropdown-item" href="#">Заказы</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('auth.logoutUser') }}">Выйти</a></li>
+                            </ul>
+                        </div>
+                    @endif
                 @endauth
 
                 <a href="#">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\AdminMiddleware;
@@ -43,7 +44,6 @@ Route::group([
 });
 
 
-
 Route::group([
     'controller' => ProductController::class,
     'as' => 'product.',
@@ -57,14 +57,35 @@ Route::group([
 });
 
 
+// Страницы и функции в админке
 Route::group([
     'controller' => AdminController::class,
     'as' => 'admin.',
     'prefix' => '/admin',
     'middleware' => ['auth', AdminMiddleware::class]
 ], function () {
-    Route::get('/', 'admin')->name('admin');
-
+    // Страница админ панель
+    Route::get('/', 'index')->name('index');
     // Страница с формой добавления товара
     Route::get('/product/create', 'createProduct')->name('createProduct');
+    // Страница с формой добавления категории
+    Route::get('/collection/create', 'createCollection')->name('createCollection');
+
+    // Контроллер продукта
+    Route::group([
+        'controller' => ProductController::class,
+        'as' => 'product.',
+        'prefix' => '/product'
+    ], function () {
+        Route::post('/create', 'createProduct')->name('createProduct');
+    });
+
+    // Контроллер категории
+    Route::group([
+        'controller' => CollectionController::class,
+        'as' => 'collection.',
+        'prefix' => '/collection'
+    ], function () {
+       Route::post('/create', 'createCollection')->name('createCollection');
+    });
 });
