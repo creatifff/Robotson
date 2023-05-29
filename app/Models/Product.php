@@ -15,7 +15,6 @@ class Product extends Model
     protected $fillable = [
         'name',
         'text',
-        'image_path',
         'price',
         'quantity',
         'is_published',
@@ -25,7 +24,7 @@ class Product extends Model
     // У одного товара много картинок
     public function images(): HasMany
     {
-        return $this->hasMany(ProductImage::class);
+        return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
 
     // Форматирование цены
@@ -40,9 +39,4 @@ class Product extends Model
         return $this->belongsTo(Collection::class);
     }
 
-    // Получение картинки продукта
-    public function imageUrl()
-    {
-        return url('public' . Storage::url($this->image_path));
-    }
 }

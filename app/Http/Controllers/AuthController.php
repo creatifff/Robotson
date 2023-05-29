@@ -16,6 +16,7 @@ class AuthController extends Controller
 
         $user = User::query()->create($validated);
 
+        /** @var User $user */
         auth()->login($user);
 
 //        return response()->json([

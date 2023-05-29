@@ -836,6 +836,12 @@ h1,h2,h3,h4,h5,h6,p {
     font-size: 14px;
 }
 
+.alert {
+    position: absolute;
+    z-index: 4;
+    width: fit-content;
+    margin: 0 0 0 auto;
+}
 
 
 /* Register page styles */

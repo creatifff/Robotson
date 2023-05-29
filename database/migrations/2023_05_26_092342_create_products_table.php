@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->text('text');
-            $table->string('image_path')->default('public/images/item-default.png');
             $table->integer('price')->default(0);
             $table->integer('quantity')->default(0);
             $table->boolean('is_published')->default(true);

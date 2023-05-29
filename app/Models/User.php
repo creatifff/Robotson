@@ -41,18 +41,31 @@ class User extends Authenticatable
         'password',
     ];
 
+    // Получение аватарки пользователя
     public function imageUrl() {
         return url('public' . Storage::url($this->image_path));
     }
 
+    // Получение полного имени
     public function getFullNameAttribute()
     {
+        if($this->middle_name) {
+            return $this->surname . ' ' . $this->name . ' ' . $this->middle_name;
+        }
+
         return $this->surname . ' ' . $this->name;
     }
 
+    // Проверка на админа
     public function isAdmin():bool
     {
         return $this->role === self::IS_ADMIN;
+    }
+
+    // Дата регистрации пользователя
+    public function createdDate()
+    {
+        return date('d:m:Y', strtotime($this->created_at));
     }
 
 }

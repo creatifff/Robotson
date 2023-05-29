@@ -26,4 +26,13 @@ class LoginUserRequest extends FormRequest
             'password' => 'required',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+          'email.required' => 'Введите ваш e-mail',
+          'email.email' => 'Неверный формат почты',
+          'password.required' => 'Введите пароль'
+        ];
+    }
 }
