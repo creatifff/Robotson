@@ -30,7 +30,7 @@ class Product extends Model
     // Форматирование цены
     public function money(): string
     {
-        return number_format($this->price, 2, ',', ' ') . ' ₽';
+        return number_format($this->price, 0, ',', ' ') . ' ₽';
     }
 
     // Привязка категории к товару

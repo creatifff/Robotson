@@ -30,7 +30,7 @@ class IndexController extends Controller
             $products = $products->where('collection_id', '=', $request->get('collection'));
         }
 
-        $products = $products->paginate(30)->withQueryString();
+        $products = $products->paginate(8)->withQueryString();
 
         return view('pages.catalog', compact('products', 'collections'));
     }

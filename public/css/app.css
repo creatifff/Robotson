@@ -574,10 +574,25 @@ h1,h2,h3,h4,h5,h6,p {
 .item {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 1px solid #e7e7e7;
+}
+
+.item__image {
+    width: 100%;
+}
+
+.item-img {
+    width: 100%;
+    object-fit: contain;
+    height: 200px;
+}
+
+.item__content {
+    display: flex;
+    flex-direction: column;
+
 }
 
 .item__info {
@@ -599,10 +614,6 @@ h1,h2,h3,h4,h5,h6,p {
 .item__price {
     font-weight: 700;
     font-size: 18px;
-}
-
-.item img {
-    width: 100%;
 }
 
 .item__btns-content {
@@ -957,3 +968,20 @@ h1,h2,h3,h4,h5,h6,p {
     width: fit-content;
     gap: 60px;
 }
+
+
+
+/* Catalog page styles */
+
+.catalog__content {
+    display: flex;
+    flex-direction: row;
+}
+
+.catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+
