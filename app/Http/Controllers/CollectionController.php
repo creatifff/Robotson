@@ -12,8 +12,12 @@ class CollectionController extends Controller
     {
         $validated = $request->validated();
 
+        if($request->hasFile('image_path')) {
+            $validated['image_path'] = $request->file('image_path')->store('public/images');
+        }
+
         $collection = Collection::query()->create($validated);
 
-        return redirect()->route('admin.index')->with(['message' => "Категория \"$collection->name\" была добавлена!"]);
+        return redirect()->route('admin.index')->with(['message' => "Категория \"$collection->name\" добавлена!"]);
     }
 }

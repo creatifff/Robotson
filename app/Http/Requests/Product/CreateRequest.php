@@ -27,7 +27,7 @@ class CreateRequest extends FormRequest
             'price' => 'required|numeric|min:1',
             'quantity' => 'required|numeric',
             'collection_id' => 'required|exists:collections,id',
-            'image_path' => 'nullable|mimes:jpg,png,jpeg,webp|max:5000'
+            'image_path' => 'nullable|mimes:jpg,png,jpeg,webp,svg|max:5000'
         ];
     }
 

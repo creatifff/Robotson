@@ -85,7 +85,8 @@
     <!-- Services section -->
     <section class="section black">
         <div class="container__main">
-            <h2 class="section__title black services-title">Услуги, благодаря которым усовершенствуется ваше предприятие</h2>
+            <h2 class="section__title black services-title">Услуги, благодаря которым усовершенствуется ваше
+                предприятие</h2>
             <div class="services__content">
 
                 <div class="nav-pills" role="tablist" aria-orientation="vertical">
@@ -190,166 +191,42 @@
             </div>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper last-items-slider">
-                    <div class="swiper-slide">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('public/images/item1.webp') }}" alt="item-img">
-                            </a>
-                            <div class="item__info">
-                                <h4 class="item__category">Robots-Humanoids</h4>
-                                <a href="#">
-                                    <h3 class="item__name">RoboThespian Humanoid Robot - Model RT4 (US version)</h3>
-                                </a>
-                                <p class="item__price">699000 ₽</p>
-                            </div>
-                            <div class="item__btns-content">
-                                <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                <a class="item__btn to-favourite-btn" href="#">
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('public/images/item1.webp') }}" alt="item-img">
-                            </a>
-                            <div class="item__info">
-                                <h4 class="item__category">Robots-Humanoids</h4>
-                                <a href="#">
-                                    <h3 class="item__name">RoboThespian Humanoid Robot - Model RT4 (US version)</h3>
-                                </a>
-                                <p class="item__price">699000 ₽</p>
-                            </div>
-                            <div class="item__btns-content">
-                                <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                <a class="item__btn to-favourite-btn" href="#">
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
+                    @foreach($products as $product)
+                        <div class="swiper-slide">
+                            <div class="item">
+
+                                <div class="item__image">
+                                    <a href="{{ route('product.show', $product) }}">
+                                        @if($product->images()->count() > 0)
+                                            <img class="item-img" src="{{ $product->images()->first()->path() }}"
+                                                 alt="{{ $product->name }}">
+                                        @endif
+                                    </a>
+                                </div>
+
+                                <div class="item__content">
+                                    <div class="item__category">
+                                        <h4 class="item-category">{{ $product->collection->name }}</h4>
+                                    </div>
+                                    <div class="item__name">
+                                        <a href="{{ route('product.show', $product) }}">
+                                            <h3 class="item-name">{{ $product->name }}</h3>
+                                        </a>
+                                    </div>
+                                    <div class="item__price">
+                                        <p class="item-price">{{ $product->money() }}</p>
+                                    </div>
+                                    <div class="item__btns-content">
+                                        <a class="item__btn btn-transparent" href="#">В корзину</a>
+                                        <a class="item__btn to-favourite-btn" href="#">
+                                            <i class="fa-solid fa-heart"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('public/images/item1.webp') }}" alt="item-img">
-                            </a>
-                            <div class="item__info">
-                                <h4 class="item__category">Robots-Humanoids</h4>
-                                <a href="#">
-                                    <h3 class="item__name">RoboThespian Humanoid Robot - Model RT4 (US version)</h3>
-                                </a>
-                                <p class="item__price">699000 ₽</p>
-                            </div>
-                            <div class="item__btns-content">
-                                <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                <a class="item__btn to-favourite-btn" href="#">
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('public/images/item1.webp') }}" alt="item-img">
-                            </a>
-                            <div class="item__info">
-                                <h4 class="item__category">Robots-Humanoids</h4>
-                                <a href="#">
-                                    <h3 class="item__name">RoboThespian Humanoid Robot - Model RT4 (US version)</h3>
-                                </a>
-                                <p class="item__price">699000 ₽</p>
-                            </div>
-                            <div class="item__btns-content">
-                                <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                <a class="item__btn to-favourite-btn" href="#">
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('public/images/item1.webp') }}" alt="item-img">
-                            </a>
-                            <div class="item__info">
-                                <h4 class="item__category">Robots-Humanoids</h4>
-                                <a href="#">
-                                    <h3 class="item__name">RoboThespian Humanoid Robot - Model RT4 (US version)</h3>
-                                </a>
-                                <p class="item__price">699000 ₽</p>
-                            </div>
-                            <div class="item__btns-content">
-                                <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                <a class="item__btn to-favourite-btn" href="#">
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('public/images/item1.webp') }}" alt="item-img">
-                            </a>
-                            <div class="item__info">
-                                <h4 class="item__category">Robots-Humanoids</h4>
-                                <a href="#">
-                                    <h3 class="item__name">RoboThespian Humanoid Robot - Model RT4 (US version)</h3>
-                                </a>
-                                <p class="item__price">699000 ₽</p>
-                            </div>
-                            <div class="item__btns-content">
-                                <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                <a class="item__btn to-favourite-btn" href="#">
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('public/images/item1.webp') }}" alt="item-img">
-                            </a>
-                            <div class="item__info">
-                                <h4 class="item__category">Robots-Humanoids</h4>
-                                <a href="#">
-                                    <h3 class="item__name">RoboThespian Humanoid Robot - Model RT4 (US version)</h3>
-                                </a>
-                                <p class="item__price">699000 ₽</p>
-                            </div>
-                            <div class="item__btns-content">
-                                <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                <a class="item__btn to-favourite-btn" href="#">
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('public/images/item1.webp') }}" alt="item-img">
-                            </a>
-                            <div class="item__info">
-                                <h4 class="item__category">Robots-Humanoids</h4>
-                                <a href="#">
-                                    <h3 class="item__name">RoboThespian Humanoid Robot - Model RT4 (US version)</h3>
-                                </a>
-                                <p class="item__price">699000 ₽</p>
-                            </div>
-                            <div class="item__btns-content">
-                                <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                <a class="item__btn to-favourite-btn" href="#">
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
@@ -370,11 +247,11 @@
                 <form class="request-form" method="POST">
                     <div class="form-request-block">
                         <div class="form__input-column">
-                            <label for="email" >Адрес электронной почты</label>
+                            <label for="email">Адрес электронной почты</label>
                             <input type="email" class="form__input" id="email">
                         </div>
                         <div class="form__input-column">
-                            <label for="phone-number" >Номер телефона</label>
+                            <label for="phone-number">Номер телефона</label>
                             <input type="text" class="form__input" id="phone-number">
                         </div>
                         <label>
@@ -389,7 +266,7 @@
                     </div>
                     <div class="form-request-block">
                         <div class="form__input-column">
-                            <label for="question" >Ваш вопрос (необязательно)</label>
+                            <label for="question">Ваш вопрос (необязательно)</label>
                             <textarea class="form__textarea" id="question" rows="4"></textarea>
                         </div>
                         <button type="submit" class="form__btn">Отправить</button>
@@ -404,11 +281,12 @@
         <div class="container__main">
             <div class="section__title partners__title">Наши партнеры</div>
             <div class="partners__grid">
-                <img class="partner__img" src="{{ asset('public/images/gaztech-partner.png') }}" alt="partner-logo" />
-                <img class="partner__img" src="{{ asset('public/images/2050-partner.png') }}" alt="partner-logo" />
-                <img class="partner__img" src="{{ asset('public/images/fora-partner.png') }}" alt="partner-logo" />
-                <img class="partner__img" src="{{ asset('public/images/roskosmos-partner.png') }}" alt="partner-logo" />
-                <img class="partner__img" src="{{ asset('public/images/dumbspecnaz-partner.png') }}" alt="partner-logo" />
+                <img class="partner__img" src="{{ asset('public/images/gaztech-partner.png') }}" alt="partner-logo"/>
+                <img class="partner__img" src="{{ asset('public/images/2050-partner.png') }}" alt="partner-logo"/>
+                <img class="partner__img" src="{{ asset('public/images/fora-partner.png') }}" alt="partner-logo"/>
+                <img class="partner__img" src="{{ asset('public/images/roskosmos-partner.png') }}" alt="partner-logo"/>
+                <img class="partner__img" src="{{ asset('public/images/dumbspecnaz-partner.png') }}"
+                     alt="partner-logo"/>
             </div>
         </div>
     </section>

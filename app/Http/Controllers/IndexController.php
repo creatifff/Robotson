@@ -8,8 +8,18 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function home() {
-        return view('pages.home');
+    public function home(Request $request) {
+        $collections = Collection::all();
+
+        $products = Product::query()->where('is_published', '=', true);
+
+        if($request->has('collection')) {
+            $products = $products->where('collection_id', '=', $request->get('collection'));
+        }
+
+        $products = $products->paginate(10)->withQueryString();
+
+        return view('pages.home', compact('products', 'collections'));
     }
 
     public function register() {

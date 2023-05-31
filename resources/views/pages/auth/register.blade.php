@@ -11,7 +11,7 @@
         </div>
         <div class="container__main">
             <div class="register-content">
-                <form class="form" action="{{ route('auth.createUser') }}" method="post">
+                <form class="form" action="{{ route('auth.createUser') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="form__input-column">
                         <label for="name">Имя</label>
