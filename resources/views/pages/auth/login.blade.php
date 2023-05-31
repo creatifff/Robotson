@@ -38,6 +38,10 @@
                     </div>
                     @enderror
                     <button class="form__btn form-auth__btn" type="submit">Войти</button>
+                    <div class="auth-offer">
+                        <p>Нет аккаунта?</p>
+                        <a href="{{ route('page.login') }}">Зарегистрируйтесь</a>
+                    </div>
                 </form>
             </div>
         </div>

@@ -11,13 +11,13 @@ class IndexController extends Controller
     public function home(Request $request) {
         $collections = Collection::all();
 
-        $products = Product::query()->where('is_published', '=', true);
+        $products = Product::query()->where('is_published', '=', true)->inRandomOrder()->take(10)->get();
 
         if($request->has('collection')) {
             $products = $products->where('collection_id', '=', $request->get('collection'));
         }
 
-        $products = $products->paginate(10)->withQueryString();
+//        $products = $products->paginate(10)->withQueryString();
 
         return view('pages.home', compact('products', 'collections'));
     }

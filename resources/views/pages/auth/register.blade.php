@@ -88,6 +88,10 @@
                     </label>
 
                     <button class="form__btn form-auth__btn" type="submit">Регистрация</button>
+                    <div class="auth-offer">
+                        <p>Уже зарегистрированы?</p>
+                        <a href="{{ route('page.login') }}">Войдите в аккаунт</a>
+                    </div>
                 </form>
             </div>
         </div>

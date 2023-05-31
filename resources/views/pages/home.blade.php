@@ -32,7 +32,7 @@
     </section>
 
     <!-- Benefits section -->
-    <section class="section white">
+    <section id="benefits" class="section white">
         <div class="container__main">
             <h2 class="section__title white benefits-title">Почему стоит выбрать именно Robotson</h2>
             <div class="benefits__content">
@@ -83,7 +83,7 @@
     </section>
 
     <!-- Services section -->
-    <section class="section black">
+    <section id="services" class="section black">
         <div class="container__main">
             <h2 class="section__title black services-title">Услуги, благодаря которым усовершенствуется ваше
                 предприятие</h2>
@@ -186,7 +186,7 @@
     <section class="section white">
         <div class="container__main">
             <div class="last-items-section-title">
-                <h3 class="section__title white last-items-title">Избранные товары</h3>
+                <h3 class="section__title white last-items-title">Последние продукты</h3>
                 <a href="{{ route('page.catalog') }}">Показать все</a>
             </div>
             <div class="swiper mySwiper">
@@ -194,7 +194,6 @@
                     @foreach($products as $product)
                         <div class="swiper-slide">
                             <div class="item">
-
                                 <div class="item__image">
                                     <a href="{{ route('product.show', $product) }}">
                                         @if($product->images()->count() > 0)
@@ -203,7 +202,6 @@
                                         @endif
                                     </a>
                                 </div>
-
                                 <div class="item__content">
                                     <div class="item__category">
                                         <h4 class="item-category">{{ $product->collection->name }}</h4>
@@ -218,12 +216,11 @@
                                     </div>
                                     <div class="item__btns-content">
                                         <a class="item__btn btn-transparent" href="#">В корзину</a>
-                                        <a class="item__btn to-favourite-btn" href="#">
-                                            <i class="fa-solid fa-heart"></i>
-                                        </a>
+                                        {{--                                    <a class="item__btn to-favourite-btn" href="#">--}}
+                                        {{--                                        <i class="fa-solid fa-heart"></i>--}}
+                                        {{--                                    </a>--}}
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     @endforeach

@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer id="contacts" class="footer">
     <div class="container__main">
         <div class="footer__grid-one">
             <div class="company__aside">

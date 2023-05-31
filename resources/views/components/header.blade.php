@@ -4,9 +4,9 @@
             <div class="nav__menu-section">
                 <a href="/" class="header__nav-btn__name">Главная</a>
                 <a href="{{ route('page.catalog') }}" class="header__nav-btn__name">Каталог</a>
-                <a href="#" class="header__nav-btn__name">Услуги</a>
-                <a href="#" class="header__nav-btn__name">Контакты</a>
-                <a href="#" class="header__nav-btn__name">О компании</a>
+                <a href="#services" class="header__nav-btn__name">Услуги</a>
+                <a href="#contacts" class="header__nav-btn__name">Контакты</a>
+                <a href="#benefits" class="header__nav-btn__name">О компании</a>
             </div>
             <div class="nav__menu-section">
                 <a target="_blank" href="https://t.me/nazyrovrr">
