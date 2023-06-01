@@ -59,11 +59,19 @@ class ProductController extends Controller
      * @param Product $product
      * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
-    public function show(Product $product)
+    public function show(Product $product, Request $request)
     {
 //        $collectionId = $product->collection_id;
 //        $collection = Collection::findOrFail($collectionId);
 
-        return view('pages.single', compact('product'));
+        $collections = Collection::all();
+
+        $products = Product::query()->where('is_published', '=', true)->inRandomOrder()->take(10)->get();
+
+        if($request->has('collection')) {
+            $products = $products->where('collection_id', '=', $request->get('collection'));
+        }
+
+        return view('pages.single', compact('product', 'products', 'collections'));
     }
 }

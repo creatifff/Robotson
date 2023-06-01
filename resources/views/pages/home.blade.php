@@ -189,7 +189,7 @@
                 <h3 class="section__title white last-items-title">Последние продукты</h3>
                 <a href="{{ route('page.catalog') }}">Показать все</a>
             </div>
-            <div class="swiper mySwiper">
+            <div style="--swiper-navigation-color: #0e0e0e; --swiper-pagination-color: #0e0e0e" class="swiper mySwiper">
                 <div class="swiper-wrapper last-items-slider">
                     @foreach($products as $product)
                         <div class="swiper-slide">
