@@ -24,6 +24,6 @@ class ProductImage extends Model
     // Получение картинки продукта
     public function path()
     {
-        return url('public' . Storage::url($this->image_path));
+        return url(Storage::url($this->image_path));
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image_path')->nullable()->default('public/images/coll-default-img.png');
+            $table->string('image_path')->nullable()->default('images/coll-default-img.png');
             $table->timestamps();
         });
     }

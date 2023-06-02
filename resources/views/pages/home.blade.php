@@ -8,7 +8,7 @@
         <div class="intro__background">
             <video
                 class="background__video"
-                src="{{ asset('public/video/intro-video.mp4') }}"
+                src="{{ asset('video/intro-video.mp4') }}"
                 autoplay
                 loop
                 muted
@@ -37,7 +37,7 @@
             <h2 class="section__title white benefits-title">Почему стоит выбрать именно Robotson</h2>
             <div class="benefits__content">
                 <div class="benefit">
-                    <img src="{{ asset('public/images/range-icon.png') }}" alt="range-feature-icon">
+                    <img src="{{ asset('images/range-icon.png') }}" alt="range-feature-icon">
                     <div class="benefit__text">
                         <h6>Широкий ассортимент роботов</h6>
                         <p>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="benefit">
-                    <img src="{{ asset('public/images/approach-icon.png') }}" alt="approach-feature-icon">
+                    <img src="{{ asset('images/approach-icon.png') }}" alt="approach-feature-icon">
                     <div class="benefit__text">
                         <h6>Индивидуальный подход</h6>
                         <p>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="benefit">
-                    <img src="{{ asset('public/images/software-icon.png') }}" alt="software-feature-icon">
+                    <img src="{{ asset('images/software-icon.png') }}" alt="software-feature-icon">
                     <div class="benefit__text">
                         <h6>Не просто магазин</h6>
                         <p>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="benefit">
-                    <img src="{{ asset('public/images/support-icon.png') }}" alt="support-feature-icon">
+                    <img src="{{ asset('images/support-icon.png') }}" alt="support-feature-icon">
                     <div class="benefit__text">
                         <h6>Профессиональная техническая поддержка</h6>
                         <p>Наша служба поддержки всегда готова ответить на ваши вопросы и помочь решить любые проблемы,
@@ -118,7 +118,7 @@
                                 созданию дизайна и конструкции роботов
                                 любой сложности под различные задачи
                             </div>
-                            <img src="{{ asset('public/images/services-img1.png') }}" alt="service-img-robot">
+                            <img src="{{ asset('images/services-img1.png') }}" alt="service-img-robot">
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-digital" role="tabpanel"
@@ -135,7 +135,7 @@
                                     <li class="listed-item-digital">обратный инжиниринг</li>
                                 </ul>
                             </div>
-                            <img src="{{ asset('public/images/digital-service.png') }}" alt="service-img-digital">
+                            <img src="{{ asset('images/digital-service.png') }}" alt="service-img-digital">
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-laser" role="tabpanel"
@@ -157,7 +157,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <img src="{{ asset('public/images/3d-scan-service.png') }}" alt="service-img-3d-scan">
+                            <img src="{{ asset('images/3d-scan-service.png') }}" alt="service-img-3d-scan">
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-development" role="tabpanel"
@@ -174,7 +174,7 @@
                                     <li class="listed-item-digital">бумажного документооборота</li>
                                 </ul>
                             </div>
-                            <img src="{{ asset('public/images/services-img4.png') }}" alt="service-img-development">
+                            <img src="{{ asset('images/services-img4.png') }}" alt="service-img-development">
                         </div>
                     </div>
                 </div>
@@ -278,11 +278,11 @@
         <div class="container__main">
             <div class="section__title partners__title">Наши партнеры</div>
             <div class="partners__grid">
-                <img class="partner__img" src="{{ asset('public/images/gaztech-partner.png') }}" alt="partner-logo"/>
-                <img class="partner__img" src="{{ asset('public/images/2050-partner.png') }}" alt="partner-logo"/>
-                <img class="partner__img" src="{{ asset('public/images/fora-partner.png') }}" alt="partner-logo"/>
-                <img class="partner__img" src="{{ asset('public/images/roskosmos-partner.png') }}" alt="partner-logo"/>
-                <img class="partner__img" src="{{ asset('public/images/dumbspecnaz-partner.png') }}"
+                <img class="partner__img" src="{{ asset('images/gaztech-partner.png') }}" alt="partner-logo"/>
+                <img class="partner__img" src="{{ asset('images/2050-partner.png') }}" alt="partner-logo"/>
+                <img class="partner__img" src="{{ asset('images/fora-partner.png') }}" alt="partner-logo"/>
+                <img class="partner__img" src="{{ asset('images/roskosmos-partner.png') }}" alt="partner-logo"/>
+                <img class="partner__img" src="{{ asset('images/dumbspecnaz-partner.png') }}"
                      alt="partner-logo"/>
             </div>
         </div>

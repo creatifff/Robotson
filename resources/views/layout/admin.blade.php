@@ -21,8 +21,8 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     @vite(['resources/js/app.js'])
-    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
-    <script src="{{ asset('public/js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <title>@yield('title') - Панель администратора</title>
 </head>
 <body>

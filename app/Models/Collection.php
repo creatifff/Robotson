@@ -23,6 +23,6 @@ class Collection extends Model
 
     // Картинка категории
     public function image() {
-        return url('public' . Storage::url($this->image_path));
+        return url(Storage::url($this->image_path));
     }
 }

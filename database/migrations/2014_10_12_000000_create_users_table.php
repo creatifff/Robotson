@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('image_path')->nullable()->default('public/images/user-img-default.png');
+            $table->string('image_path')->nullable()->default('images/user-img-default.png');
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->timestamps();
         });
