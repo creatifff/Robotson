@@ -13,7 +13,7 @@
         @csrf
         <div class="form__block">
             <div class="form__input-column">
-                <label for="name">Название продукта</label>
+                <label for="name">Название</label>
                 <input class="form__input is-invalid" type="text" name="name" id="name">
                 @error('name')
                 <div class="invalid-feedback">
@@ -22,7 +22,7 @@
                 @enderror
             </div>
             <div class="form__input-column">
-                <label for="price">Цена</label>
+                <label for="price">Стоимость</label>
                 <input class="form__input is-invalid" type="text" name="price" id="price">
                 @error('price')
                 <div class="invalid-feedback">
@@ -31,7 +31,7 @@
                 @enderror
             </div>
             <div class="form__input-column">
-                <label for="quantity">Кол-во продуктов</label>
+                <label for="quantity">Кол-во штук</label>
                 <input class="form__input is-invalid" min="1" type="number" name="quantity" id="quantity">
                 @error('quantity')
                 <div class="invalid-feedback">
@@ -41,7 +41,8 @@
             </div>
             <div class="form__input-column">
                 <label for="collection">Выберите категорию продукта</label>
-                <select class="form__input is-invalid" id="collection" name="collection_id">
+                <select class="form__input" id="collection" name="collection_id">
+                    <option disabled selected>...</option>
                     @foreach($collections as $collection)
                         <option value="{{ $collection->id }}">{{ $collection->name }}
                             - {{ $collection->products()->count() }} шт.
@@ -49,7 +50,7 @@
                     @endforeach
                 </select>
                 @error('collection_id')
-                <div class="invalid-feedback">
+                <div class="invalid-feedback-select">
                     {{ $message }}
                 </div>
                 @enderror

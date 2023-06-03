@@ -20,21 +20,21 @@
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    @vite(['resources/js/app.js'])
-    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
-    <script src="{{ asset('public/js/app.js') }}" defer></script>
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    {{--    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">--}}
+    {{--    <script src="{{ asset('public/js/app.js') }}" defer></script>--}}
     <title>@yield('title') - Robotson®</title>
 </head>
 <body>
 @include('components.header')
-    @if(session()->has('message'))
-        <div class="container__main">
-            <div class="alert alert-info">
-                <p>{{ session()->get('message') }}</p>
-            </div>
+@if(session()->has('message'))
+    <div class="container__main">
+        <div class="alert alert-info">
+            <p>{{ session()->get('message') }}</p>
         </div>
-    @endif
-    @yield('content')
+    </div>
+@endif
+@yield('content')
 @include('components.footer')
 </body>
 </html>

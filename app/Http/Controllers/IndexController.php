@@ -17,7 +17,7 @@ class IndexController extends Controller
             $products = $products->where('collection_id', '=', $request->get('collection'));
         }
 
-//        $products = $products->paginate(10)->withQueryString();
+        //  $products = $products->paginate(10)->withQueryString();
 
         return view('pages.home', compact('products', 'collections'));
     }

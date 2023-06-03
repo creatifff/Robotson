@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RequestController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::group([
     Route::get('/register', 'register')->name('register');
     Route::get('/login', 'login')->name('login');
     Route::get('/catalog', 'catalog')->name('catalog');
+    Route::post('/', 'home')->name('makeRequest');
 });
 
 
@@ -81,10 +83,9 @@ Route::group([
         'prefix' => '/collection'
     ], function () {
         // добавить
-       Route::post('/create', 'createCollection')->name('createCollection');
+        Route::post('/create', 'createCollection')->name('createCollection');
     });
 });
-
 
 
 // Контроллер продукта
@@ -95,4 +96,12 @@ Route::group([
 ], function () {
     // Страница одного продукта
     Route::get('/{product:id}', 'show')->name('show')->where('id', '[0-9]*');
+});
+
+// Контроллер для добавления заявки
+Route::group([
+    'controller' => RequestController::class,
+    'as' => 'request.',
+], function () {
+    Route::post('/leaveRequest', 'leaveRequest')->name('leaveRequest');
 });

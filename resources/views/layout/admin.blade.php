@@ -20,9 +20,9 @@
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    @vite(['resources/js/app.js'])
-    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
-    <script src="{{ asset('public/js/app.js') }}" defer></script>
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    {{--    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">--}}
+    {{--    <script src="{{ asset('public/js/app.js') }}" defer></script>--}}
     <title>@yield('title') - Панель администратора</title>
 </head>
 <body>
@@ -34,9 +34,13 @@
         </div>
     </div>
 @endif
-<section class="section">
+<section>
+    <div class="admin-page-header-bg">
+        <div class="container__main">
+            <h1 class="section__title black">Панель администратора</h1>
+        </div>
+    </div>
     <div class="container__main">
-        <h1 class="section__title black">Панель администратора</h1>
         <div class="profile__grid">
             <div class="profile__menu">
                 <a href="{{ route('admin.index') }}" class="profile__menu-btn">Главная</a>
@@ -47,7 +51,8 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('admin.createProduct') }}">Добавить продукт</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.createCollection') }}">Добавить категорию</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.createCollection') }}">Добавить категорию</a>
+                        </li>
                     </ul>
                 </div>
                 <a href="{{ route('admin.showProducts') }}" class="profile__menu-btn">Список продуктов</a>

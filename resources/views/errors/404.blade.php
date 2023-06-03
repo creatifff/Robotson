@@ -89,7 +89,7 @@
     <div class="text">
         <h1>404</h1>
         <h2>СТРАНИЦА НЕ НАЙДЕНА</h2>
-        <a href="#" class="yes">НА ГЛАВНУЮ</a>
+        <a href="/" class="yes">НА ГЛАВНУЮ</a>
     </div>
 </section>
 

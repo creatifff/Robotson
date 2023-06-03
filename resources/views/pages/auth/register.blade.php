@@ -34,16 +34,6 @@
                         @enderror
                     </div>
                     <div class="form__input-column">
-                        <label for="city">Город</label>
-                        <input type="text" class="form__input is-invalid" id="city" value="{{ old('city') }}"
-                               name="city">
-                        @error('city')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="form__input-column">
                         <label for="phone_number">Номер телефона</label>
                         <input type="text" class="form__input is-invalid" id="phone_number"
                                value="{{ old('phone_number') }}" name="phone_number">
