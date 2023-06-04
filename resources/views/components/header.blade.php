@@ -4,9 +4,9 @@
             <div class="nav__menu-section">
                 <a href="/" class="header__nav-btn__name">Главная</a>
                 <a href="{{ route('page.catalog') }}" class="header__nav-btn__name">Каталог</a>
-                <a href="#services" class="header__nav-btn__name">Услуги</a>
-                <a href="#contacts" class="header__nav-btn__name">Контакты</a>
-                <a href="#benefits" class="header__nav-btn__name">О компании</a>
+                <a href="{{ asset('#services') }}" class="header__nav-btn__name">Услуги</a>
+                <a href="{{ asset('#contacts') }}" class="header__nav-btn__name">Контакты</a>
+                <a href="{{ asset('#benefits') }}" class="header__nav-btn__name">О компании</a>
             </div>
             <div class="nav__menu-section">
                 <a target="_blank" href="https://t.me/nazyrovrr">
@@ -56,8 +56,8 @@
                                 <span class="header__nav-btn__name">Кабинет</span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Главная</a></li>
-                                <li><a class="dropdown-item" href="#">Личные данные</a></li>
+                                <li><a class="dropdown-item" href="{{ route('account.index') }}">Главная</a></li>
+                                <li><a class="dropdown-item" href="{{ route('account.personalData') }}">Мои данные</a></li>
                                 <li><a class="dropdown-item" href="#">Мои заказы</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -74,7 +74,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ route('admin.index') }}">Главная</a></li>
-                                <li><a class="dropdown-item" href="#">Мои данные</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.personalData') }}">Мои данные</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.showProducts') }}">Все продукты</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.showUsers') }}">Все пользователи</a></li>
                                 <li><a class="dropdown-item" href="#">Заказы</a></li>

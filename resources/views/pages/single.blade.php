@@ -2,52 +2,53 @@
 
 @section('title', $product->name)
 
+<style>
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .mySwiper2 {
+        height: 80%;
+        width: 100%;
+
+    }
+
+    .mySwiper3 {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+
+    .mySwiper3 .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+    }
+
+    .mySwiper3 .swiper-slide-thumb-active {
+        opacity: 1;
+        border: 1px solid #dadada;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
 @section('content')
     <section class="section white">
         <div class="container__main">
             <div class="single__product-content">
 
-                <style>
-                    .swiper {
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                    .swiper-slide {
-                        background-size: cover;
-                        background-position: center;
-                    }
-
-                    .mySwiper2 {
-                        height: 80%;
-                        width: 100%;
-
-                    }
-
-                    .mySwiper3 {
-                        height: 20%;
-                        box-sizing: border-box;
-                        padding: 10px 0;
-                    }
-
-                    .mySwiper3 .swiper-slide {
-                        width: 25%;
-                        height: 100%;
-                        opacity: 0.4;
-                    }
-
-                    .mySwiper3 .swiper-slide-thumb-active {
-                        opacity: 1;
-                        border: 1px solid #dadada;
-                    }
-
-                    .swiper-slide img {
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                </style>
 
                 <div class="product-image__content">
 
@@ -182,34 +183,7 @@
                     </h2>
                     <p>Оставьте заявку, и мы свяжемся с вами в ближайшее время</p>
                 </div>
-                <form class="request-form" method="POST">
-                    <div class="form-request-block">
-                        <div class="form__input-column">
-                            <label for="email">Адрес электронной почты</label>
-                            <input type="email" class="form__input" id="email">
-                        </div>
-                        <div class="form__input-column">
-                            <label for="phone-number">Номер телефона</label>
-                            <input type="text" class="form__input" id="phone-number">
-                        </div>
-                        <label>
-                            <select class="form__input">
-                                <option disabled selected>Выберите услугу</option>
-                                <option value="1">Роботы "под ключ"</option>
-                                <option value="2">Цифровизация</option>
-                                <option value="3">Лазерное 3D-сканирование</option>
-                                <option value="4">Разработка ПО</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="form-request-block">
-                        <div class="form__input-column">
-                            <label for="question">Ваш вопрос (необязательно)</label>
-                            <textarea class="form__textarea" id="question" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="form__btn">Отправить</button>
-                    </div>
-                </form>
+                @include('components.requestForm')
             </div>
         </div>
     </section>

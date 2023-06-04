@@ -50,10 +50,10 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         if($this->middle_name) {
-            return $this->surname . ' ' . $this->name . ' ' . $this->middle_name;
+            return $this->name . ' ' . $this->middle_name . ' ' . $this->surname;
         }
 
-        return $this->surname . ' ' . $this->name;
+        return $this->name . ' ' . $this->surname;
     }
 
     // Проверка на админа

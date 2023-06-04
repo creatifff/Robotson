@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CollectionController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequestController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +32,6 @@ Route::group([
     Route::get('/register', 'register')->name('register');
     Route::get('/login', 'login')->name('login');
     Route::get('/catalog', 'catalog')->name('catalog');
-    Route::post('/', 'home')->name('makeRequest');
 });
 
 
@@ -40,9 +41,25 @@ Route::group([
     'as' => 'auth.',
     'prefix' => '/auth'
 ], function () {
-    Route::post('/create', 'createUser')->name('createUser');
+    Route::post('/register', 'createUser')->name('createUser');
     Route::post('/login', 'loginUser')->name('loginUser');
     Route::get('/logout', 'logoutUser')->name('logoutUser');
+});
+
+
+// Страницы и функции в кабинете пользователя
+Route::group([
+    'controller' => AccountController::class,
+    'as' => 'account.',
+    'prefix' => '/account',
+    'middleware' => ['auth', Authenticate::class]
+], function () {
+    // Страница личного кабинета
+    Route::get('/', 'index')->name('index');
+    // Страница с формой личных данных
+    Route::get('/personal', 'personalData')->name('personalData');
+    // изменить личные данные
+    Route::post('/updateData', 'updateData')->name('updateData');
 });
 
 
@@ -55,6 +72,10 @@ Route::group([
 ], function () {
     // Страница админ панель
     Route::get('/', 'index')->name('index');
+    // Страница с формой личных данных
+    Route::get('/personal', 'personalData')->name('personalData');
+    // изменить личные данные
+    Route::post('/updateData', 'updateData')->name('updateData');
     // Страница с формой добавления товара
     Route::get('/product/create', 'createProduct')->name('createProduct');
     // Страница с формой добавления категории
@@ -103,5 +124,6 @@ Route::group([
     'controller' => RequestController::class,
     'as' => 'request.',
 ], function () {
+    // отправить заявку
     Route::post('/leaveRequest', 'leaveRequest')->name('leaveRequest');
 });

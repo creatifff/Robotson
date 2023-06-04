@@ -1270,3 +1270,60 @@ h1, h2, h3, h4, h5, h6, p {
 
 
 
+/* Account page styles */
+
+.form.form-personal-data {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-personal__block {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.form-personal__flex {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    width: 100%;
+}
+
+.form-image-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.form-image-block input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+.form-image-block span {
+    color: #406ec1;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    font-size: 14px;
+}
+.form-image-block span:hover {
+    color: #fff;
+}
+.form-image-block p {
+    margin-bottom: 5px;
+}
+
+.personal__photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
