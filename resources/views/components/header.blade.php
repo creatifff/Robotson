@@ -4,9 +4,9 @@
             <div class="nav__menu-section">
                 <a href="/" class="header__nav-btn__name">Главная</a>
                 <a href="{{ route('page.catalog') }}" class="header__nav-btn__name">Каталог</a>
-                <a href="{{ asset('#services') }}" class="header__nav-btn__name">Услуги</a>
+                <a href="{{ asset('/#services') }}" class="header__nav-btn__name">Услуги</a>
                 <a href="{{ asset('#contacts') }}" class="header__nav-btn__name">Контакты</a>
-                <a href="{{ asset('#benefits') }}" class="header__nav-btn__name">О компании</a>
+                <a href="{{ asset('/#benefits') }}" class="header__nav-btn__name">О компании</a>
             </div>
             <div class="nav__menu-section">
                 <a target="_blank" href="https://t.me/nazyrovrr">
@@ -78,6 +78,7 @@
                                 <li><a class="dropdown-item" href="{{ route('admin.showProducts') }}">Все продукты</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.showUsers') }}">Все пользователи</a></li>
                                 <li><a class="dropdown-item" href="#">Заказы</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.showRequests') }}">Заявки</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

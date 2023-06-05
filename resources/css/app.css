@@ -1337,3 +1337,50 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
+
+/* Cart page styles */
+
+.cart__inner table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #0e0e0e;
+}
+.cart__inner table th {
+    padding: 15px 20px;
+}
+
+.cart__inner table .table-cell__left {
+    padding-left: 30px;
+}
+
+.cart__inner table .table-cell__center {
+    text-align: center;
+}
+.cart__inner table tbody tr {
+    border-top: 1px solid #e7e7e7;
+}
+.cart__inner tbody td {
+    padding-top: 26px;
+    padding-bottom: 26px;
+}
+
+
+.cart-product {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.cart-product img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+.cart-product .cart-product__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+

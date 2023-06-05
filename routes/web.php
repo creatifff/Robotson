@@ -32,6 +32,7 @@ Route::group([
     Route::get('/register', 'register')->name('register');
     Route::get('/login', 'login')->name('login');
     Route::get('/catalog', 'catalog')->name('catalog');
+    Route::get('/cart', 'cart')->name('cart');
 });
 
 // Контроллер для добавления заявки

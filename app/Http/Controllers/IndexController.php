@@ -30,6 +30,11 @@ class IndexController extends Controller
         return view('pages.auth.login');
     }
 
+    public function cart()
+    {
+        return view('pages.cart');
+    }
+
     public function catalog(Request $request)
     {
         $collections = Collection::all();
