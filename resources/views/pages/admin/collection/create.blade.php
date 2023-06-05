@@ -20,15 +20,17 @@
             </div>
             @enderror
         </div>
-        <div class="form__input-column">
-            <label for="image_path">Добавьте фото к новой категории</label>
-            <input class="is-invalid" type="file" id="image_path" name="image_path">
-            @error('image_path')
-            <div class="invalid-feedback">
-                {{ $message }}
+        <div class="form__input-row">
+            <div class="form__input-column">
+                <label for="image_path">Добавьте фото к новой категории</label>
+                <input class="is-invalid" type="file" id="image_path" name="image_path">
+                @error('image_path')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
-            @enderror
+            <button class="form__btn" type="submit">Добавить</button>
         </div>
-        <button class="form__btn" type="submit">Добавить</button>
     </form>
 @endsection

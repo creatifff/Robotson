@@ -34,6 +34,15 @@ Route::group([
     Route::get('/catalog', 'catalog')->name('catalog');
 });
 
+// Контроллер для добавления заявки
+Route::group([
+    'controller' => RequestController::class,
+    'as' => 'request.',
+], function () {
+    // отправить заявку
+    Route::post('/leaveRequest', 'leaveRequest')->name('leaveRequest');
+});
+
 
 // Маршруты для авторизации на сайте
 Route::group([
@@ -60,6 +69,10 @@ Route::group([
     Route::get('/personal', 'personalData')->name('personalData');
     // изменить личные данные
     Route::post('/updateData', 'updateData')->name('updateData');
+    // Страница смены пароля
+    Route::get('/changePassword', 'changePassword')->name('changePassword');
+    // сменить пароль
+    Route::post('/updatePassword', 'updatePassword')->name('updatePassword');
 });
 
 
@@ -76,6 +89,10 @@ Route::group([
     Route::get('/personal', 'personalData')->name('personalData');
     // изменить личные данные
     Route::post('/updateData', 'updateData')->name('updateData');
+//    // Страница смены пароля
+//    Route::get('/changePassword', 'changePassword')->name('changePassword');
+//    // сменить пароль
+//    Route::post('/updatePassword', 'updatePassword')->name('updatePassword');
     // Страница с формой добавления товара
     Route::get('/product/create', 'createProduct')->name('createProduct');
     // Страница с формой добавления категории
@@ -84,6 +101,8 @@ Route::group([
     Route::get('/users', 'showUsers')->name('showUsers');
     // Страница с продуктами
     Route::get('/products', 'showProducts')->name('showProducts');
+    // Страница с заявками
+    Route::get('/requests', 'showRequests')->name('showRequests');
 
     // Контроллер продукта
     Route::group([
@@ -117,13 +136,4 @@ Route::group([
 ], function () {
     // Страница одного продукта
     Route::get('/{product:id}', 'show')->name('show')->where('id', '[0-9]*');
-});
-
-// Контроллер для добавления заявки
-Route::group([
-    'controller' => RequestController::class,
-    'as' => 'request.',
-], function () {
-    // отправить заявку
-    Route::post('/leaveRequest', 'leaveRequest')->name('leaveRequest');
 });

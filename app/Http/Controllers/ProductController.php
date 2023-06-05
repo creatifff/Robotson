@@ -36,7 +36,9 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('admin.index')->with(['message' => "Продукт \"$product->name\" успешно добавлен!"]);
+        return redirect()
+            ->route('admin.showProducts')
+            ->with(['message' => "Продукт \"$product->name\" успешно добавлен!"]);
     }
 
     /**

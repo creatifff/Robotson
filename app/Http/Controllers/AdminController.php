@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\UpdatePasswordRequest;
 use App\Http\Requests\Auth\UpdateUserRequest;
 use App\Models\Collection;
 use App\Models\Product;
+use App\Models\Request;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -20,12 +22,28 @@ class AdminController extends Controller
         return view('pages.admin.personalData');
     }
 
+//    public function changePassword()
+//    {
+//        return view('pages.admin.changePassword');
+//    }
+
+//    public function updatePassword(UpdatePasswordRequest $request, User $user)
+//    {
+//        $validated = $request->validated();
+//            $validated['password'] = Hash::make($validated['password']);
+//        $user = auth()->user();
+//        $user->save();
+//        $user->update($validated);
+//        return redirect()
+//            ->route('admin.changePassword')
+//            ->with(['message' => 'Пароль обновлен!']);
+//    }
+
     public function updateData(UpdateUserRequest $request, User $user)
     {
         $validated = $request->validated();
 
-        if ($request->hasFile('image_path'))
-        {
+        if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('public/images');
         }
 
@@ -48,6 +66,12 @@ class AdminController extends Controller
     {
         $products = Product::all();
         return view('pages.admin.products', compact('products'));
+    }
+
+    public function showRequests()
+    {
+        $requests = Request::all();
+        return view('pages.admin.requests', compact('requests'));
     }
 
     public function createProduct()

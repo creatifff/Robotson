@@ -994,19 +994,28 @@ h1, h2, h3, h4, h5, h6, p {
 .form.gray-bg {
     background-color: #1b1b1b;
     padding: 0;
+    width: 100%;
 }
 
 .form.form-flex-row .form__block {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    width: 100%;
 }
 
 .form.form-flex-row {
     display: flex;
     flex-direction: row;
-    width: fit-content;
+    width: 100%;
     gap: 60px;
+}
+
+.form__input-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -1276,6 +1285,7 @@ h1, h2, h3, h4, h5, h6, p {
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 15px;
 }
 
 .form-personal__block {

@@ -58,6 +58,7 @@
                 <a href="{{ route('admin.showProducts') }}" class="profile__menu-btn">Список продуктов</a>
                 <a href="{{ route('admin.showUsers') }}" class="profile__menu-btn">Список пользователей</a>
                 <a href="#" class="profile__menu-btn">Заказы</a>
+                <a href="{{ route('admin.showRequests') }}" class="profile__menu-btn">Заявки на услуги</a>
                 <hr>
                 <a href="{{ route('auth.logoutUser') }}" class="profile__menu-btn">Выйти</a>
             </div>
