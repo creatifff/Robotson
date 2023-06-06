@@ -10,7 +10,7 @@
                 <div class="cart-if-empty">
                     <img src="{{ asset('public/images/empty-cart-icon.png') }}" alt="empty-cart-image">
                     <h6>Ваша корзина пуста</h6>
-                    <p>Перейдите в каталог и выберите своего робота!<br>Уверены, вы найдете то, что искали!</p>
+                    <p>Перейдите в каталог и выберите своего робота!<br>Мы уверены, вы найдете то, что искали!</p>
                     <a class="cart__order-btn" href="{{ route('page.catalog') }}">Выбрать робота</a>
                 </div>
             @else
@@ -39,7 +39,8 @@
                                             </a>
                                             <div class="cart-product__info">
                                                 <a href="">
-                                                    <div class="cart-product-category">{{ $product->collection->name }}</div>
+                                                    <div
+                                                        class="cart-product-category">{{ $product->collection->name }}</div>
                                                 </a>
                                                 <a href="{{ route('product.show', $product) }}">
                                                     <div class="cart-product-name">{{ $product->name }}</div>
@@ -50,8 +51,8 @@
                                         </div>
                                     </td>
                                     <td class="line-item__product-info">
-                                        <div class="cart-product-qty">
-                                            {{ $product->quantity }}
+                                        <div style="white-space: nowrap" class="cart-product-qty">
+                                            {{ $product->quantity }} шт.
                                         </div>
                                     </td>
                                     <td class="line-item__product-info">
@@ -72,12 +73,17 @@
                         </table>
                     </div>
                     <div class="cart__total">
+                        <div class="total__text total-qty">
+                            <p>В корзине:</p>
+                            <span style="white-space: nowrap">{{ $cart->count() }} шт.</span>
+                        </div>
                         <div class="total__text">
                             <p>Итого:</p>
-                            <span>{{ $cart->getTotal() }}</span>
+                            <span style="white-space: nowrap">{{ $cart->getTotal() }}</span>
                         </div>
                         {{--                        <div class="total__text-shipping"></div>--}}
                         <a class="cart__order-btn" href="#">К оформлению</a>
+                        <a class="clear__cart-btn" href="{{ route('cart.clear') }}">Очистить корзину</a>
                     </div>
                 </div>
             @endif

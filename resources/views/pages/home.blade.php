@@ -215,7 +215,7 @@
                                         <p class="item-price">{{ $product->money() }}</p>
                                     </div>
                                     <div class="item__btns-content">
-                                        <a class="item__btn btn-transparent" href="#">В корзину</a>
+                                        <a class="item__btn btn-transparent" href="{{ route('product.addToCart', $product) }}">В корзину</a>
                                         {{--                                    <a class="item__btn to-favourite-btn" href="#">--}}
                                         {{--                                        <i class="fa-solid fa-heart"></i>--}}
                                         {{--                                    </a>--}}

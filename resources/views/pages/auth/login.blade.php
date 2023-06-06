@@ -14,7 +14,7 @@
                 <form class="form" action="{{ route('auth.loginUser') }}" method="post">
                     @csrf
                     <div class="form__input-column">
-                        <label for="email">Введите e-mail</label>
+                        <label for="email">Введите e-mail *</label>
                         <input type="text" class="form__input is-invalid" id="email" value="{{ old('email') }}"
                                name="email">
                         @error('email')
@@ -24,7 +24,7 @@
                         @enderror
                     </div>
                     <div class="form__input-column">
-                        <label for="password">Введите пароль</label>
+                        <label for="password">Введите пароль *</label>
                         <input type="password" class="form__input is-invalid" id="password" name="password">
                         @error('password')
                         <div class="invalid-feedback">

@@ -99,4 +99,10 @@ class CartService implements CartInterface
 
         return true;
     }
+
+    public function count(): int
+    {
+        $cart = session('cart', []);
+        return count($cart);
+    }
 }

@@ -14,7 +14,7 @@
                 <form class="form" action="{{ route('auth.createUser') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <div class="form__input-column">
-                        <label for="name">Имя</label>
+                        <label for="name">Имя *</label>
                         <input type="text" class="form__input is-invalid" id="name" value="{{ old('name') }}"
                                name="name">
                         @error('name')
@@ -24,7 +24,7 @@
                         @enderror
                     </div>
                     <div class="form__input-column">
-                        <label for="surname">Фамилия</label>
+                        <label for="surname">Фамилия *</label>
                         <input type="text" class="form__input is-invalid" id="surname" value="{{ old('surname') }}"
                                name="surname">
                         @error('surname')
@@ -34,7 +34,7 @@
                         @enderror
                     </div>
                     <div class="form__input-column">
-                        <label for="phone_number">Номер телефона</label>
+                        <label for="phone_number">Номер телефона *</label>
                         <input type="text" class="form__input is-invalid" id="phone_number"
                                value="{{ old('phone_number') }}" name="phone_number">
                         @error('phone_number')
@@ -44,7 +44,7 @@
                         @enderror
                     </div>
                     <div class="form__input-column">
-                        <label for="email">Адрес электронной почты</label>
+                        <label for="email">Адрес электронной почты *</label>
                         <input type="text" class="form__input is-invalid" id="email" value="{{ old('email') }}"
                                name="email">
                         @error('email')
@@ -54,7 +54,7 @@
                         @enderror
                     </div>
                     <div class="form__input-column">
-                        <label for="password">Придумайте пароль</label>
+                        <label for="password">Придумайте пароль *</label>
                         <input type="password" class="form__input is-invalid" id="password" name="password">
                         @error('password')
                         <div class="invalid-feedback">
@@ -63,7 +63,7 @@
                         @enderror
                     </div>
                     <div class="form__input-column">
-                        <label for="re_password">Повторите пароль</label>
+                        <label for="re_password">Повторите пароль *</label>
                         <input type="password" class="form__input is-invalid" id="re_password" name="re_password">
                     </div>
 

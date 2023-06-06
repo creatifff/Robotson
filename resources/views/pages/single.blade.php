@@ -113,8 +113,8 @@
                         <span class="qty-span">{{ $product->quantity }} шт.</span>
                     </div>
                     <div class="product-btns">
-                        <a class="item__btn single-product-btn" href="#">В корзину</a>
-                        <a class="item__btn single-product-btn phone-us" href="#">Связаться с нами по поводу
+                        <a class="item__btn single-product-btn" href="{{ route('product.addToCart', $product) }}">В корзину</a>
+                        <a class="item__btn single-product-btn phone-us" href="tel:89274156060">Связаться с нами по поводу
                             продукта</a>
                     </div>
                 </div>
