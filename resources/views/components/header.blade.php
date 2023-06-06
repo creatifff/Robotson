@@ -88,13 +88,13 @@
                     @endif
                 @endauth
 
-                <a href="#">
-                    <div class="header__nav-btn">
-                        <i class="fa-solid fa-heart"></i>
-                        <p class="header__nav-btn__name">Избранное</p>
-                    </div>
-                </a>
-                <a href="#">
+{{--                <a href="#">--}}
+{{--                    <div class="header__nav-btn">--}}
+{{--                        <i class="fa-solid fa-heart"></i>--}}
+{{--                        <p class="header__nav-btn__name">Избранное</p>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+                <a href="{{ route('cart.index') }}">
                     <div class="header__nav-btn">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <p class="header__nav-btn__name">Корзина</p>

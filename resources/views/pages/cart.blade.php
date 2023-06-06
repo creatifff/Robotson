@@ -5,41 +5,82 @@
 @section('content')
     <section class="section white">
         <div class="container__main">
-            <h1 class="section__title white">Корзина</h1>
-            <div class="cart__content">
-                <div class="cart__inner">
-                    <table>
-                        <thead class="hidden-phone">
-                            <tr>
-                                <th class="table-cell__left">Продукты</th>
-                                <th class="table-cell__center">В наличии</th>
-                                <th class="table-cell__center">Стоимость</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="cart-product">
-                                        <img src="" alt="img">
-                                        <div class="cart-product__info">
-                                            <div class="cart-product-category">Манипуляторы</div>
-                                            <div class="cart-product-name">Robot Thespian 4</div>
-                                            <div class="cart-product-price">345 000 ₽</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="cart-product-qty">2 шт</div>
-                                </td>
-                                <td>
-                                    <span class="cart-product-price">345 000 ₽</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+            @if($cart->isEmpty())
+                <div class="cart-if-empty">
+                    <img src="{{ asset('public/images/empty-cart-icon.png') }}" alt="empty-cart-image">
+                    <h6>Ваша корзина пуста</h6>
+                    <p>Перейдите в каталог и выберите своего робота!<br>Уверены, вы найдете то, что искали!</p>
+                    <a class="cart__order-btn" href="{{ route('page.catalog') }}">Выбрать робота</a>
                 </div>
-                <div class="cart__total"></div>
-            </div>
+            @else
+
+                <h1 class="section__title white">Корзина</h1>
+                <div class="cart__content">
+
+                    <div class="cart__inner">
+                        <table>
+                            <thead class="hidden-phone">
+                            <tr>
+                                <th class="table-cell__left">Продукт(ы)</th>
+                                <th style="white-space: nowrap" class="table-cell__center">В наличии</th>
+                                <th class="table-cell__right">Стоимость</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($cart->get() as $product)
+                                <tr>
+                                    <td class="line-item__product-info">
+                                        <div class="cart-product">
+                                            <a href="{{ route('product.show', $product) }}">
+                                                <img src="{{ $product->images()->first()->path() }}"
+                                                     alt="{{ $product->name }}">
+                                            </a>
+                                            <div class="cart-product__info">
+                                                <a href="">
+                                                    <div class="cart-product-category">{{ $product->collection->name }}</div>
+                                                </a>
+                                                <a href="{{ route('product.show', $product) }}">
+                                                    <div class="cart-product-name">{{ $product->name }}</div>
+                                                </a>
+                                                <div style="white-space: nowrap"
+                                                     class="cart-product-price">{{ $product->money() }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="line-item__product-info">
+                                        <div class="cart-product-qty">
+                                            {{ $product->quantity }}
+                                        </div>
+                                    </td>
+                                    <td class="line-item__product-info">
+                                        <div class="table__cell-block">
+                                            <span style="white-space: nowrap"
+                                                  class="cart-product-price total">{{ $product->money() }}</span>
+                                            <a href="{{ route('cart.remove', $product) }}">
+                                                <div class="remove-cart__btn">
+                                                    <i class="fa-solid fa-delete-left"></i>
+                                                    <p>Убрать</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cart__total">
+                        <div class="total__text">
+                            <p>Итого:</p>
+                            <span>{{ $cart->getTotal() }}</span>
+                        </div>
+                        {{--                        <div class="total__text-shipping"></div>--}}
+                        <a class="cart__order-btn" href="#">К оформлению</a>
+                    </div>
+                </div>
+            @endif
         </div>
     </section>
 @endsection

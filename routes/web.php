@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
@@ -32,7 +33,6 @@ Route::group([
     Route::get('/register', 'register')->name('register');
     Route::get('/login', 'login')->name('login');
     Route::get('/catalog', 'catalog')->name('catalog');
-    Route::get('/cart', 'cart')->name('cart');
 });
 
 // Контроллер для добавления заявки
@@ -137,4 +137,19 @@ Route::group([
 ], function () {
     // Страница одного продукта
     Route::get('/{product:id}', 'show')->name('show')->where('id', '[0-9]*');
+//    Route::get('/{product:name}', 'show')->name('show');
+    // добавить в корзину
+    Route::get('/{id}/addToCart', 'addToCart')->name('addToCart');
+});
+
+
+// Контроллер корзины
+Route::group([
+    'controller' => CartController::class,
+    'as' => 'cart.',
+    'prefix' => '/cart'
+], function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/{product:id}/remove', 'remove')->name('remove');
+    Route::get('/clear', 'clear')->name('clear');
 });

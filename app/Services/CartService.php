@@ -5,15 +5,22 @@ namespace App\Services;
 use App\Interfaces\CartInterface;
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
+use Throwable;
+
 
 class CartService implements CartInterface
 {
     /**
+     * @return string
+     */
+    public function getTotal(): string
+    {
+        $total = array_reduce($this->get(), fn($total, $item) => $total += $item->price, 0);
+        return number_format($total, 0, ',', ' ') . ' ₽';
+    }
+
+    /**
      * @return mixed
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      */
     public function get(): mixed
     {
@@ -23,24 +30,11 @@ class CartService implements CartInterface
             }
 
             return [];
-        } catch (\Throwable $throwable) {
+        } catch (Throwable $throwable) {
             Log::error($throwable->getMessage());
             return [];
         }
 
-    }
-
-    private function set(array $items): void
-    {
-        session(['cart' => $items]);
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotal(): int
-    {
-        return array_reduce($this->get(), fn($total, $item) => $total += $item->price, 0);
     }
 
     /**
@@ -70,15 +64,23 @@ class CartService implements CartInterface
      */
     public function remove(Product $product): bool
     {
-        if(!in_array($product, $this->get())) {
-            return false;
+        $cartItems = $this->get();
+
+        foreach ($cartItems as $key => $item) {
+            if ($item->id === $product->id) {
+                unset($cartItems[$key]);
+                $this->set($cartItems);
+                $product = null;
+                return true;
+            }
         }
 
-        $items = array_filter($this->get(), fn($element) => $element->id !== $product->id);
+        return false;
+    }
 
-        $this->set($items);
-
-        return true;
+    private function set(array $items): void
+    {
+        session(['cart' => $items]);
     }
 
     /**
@@ -90,10 +92,7 @@ class CartService implements CartInterface
         // TODO: Implement update() method.
     }
 
-    /**
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
+
     public function isEmpty(): bool
     {
         if (count($this->get()) > 0) return false;

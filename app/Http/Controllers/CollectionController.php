@@ -18,6 +18,6 @@ class CollectionController extends Controller
 
         $collection = Collection::query()->create($validated);
 
-        return redirect()->route('admin.index')->with(['message' => "Категория \"$collection->name\" добавлена!"]);
+        return redirect()->route('admin.index')->with(['message' => "Категория \"$collection->name\" добавлена"]);
     }
 }

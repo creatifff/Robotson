@@ -7,6 +7,7 @@ use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Collection;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Services\CartService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,11 +16,21 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected CartService $cartService;
+
+    public function __construct()
+    {
+        $this->cartService = new CartService();
+    }
+
+
+
     /**
      * @param CreateRequest $request
      * @return RedirectResponse
      */
-    public function createProduct(CreateRequest $request)
+    // Создать продукт
+    public function createProduct(CreateRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -34,40 +45,68 @@ class ProductController extends Controller
                     'image_path' => $file->store('public/images')
                 ]);
             }
+        } else {
+            ProductImage::query()->create([
+                'product_id' => $product->id,
+            ]);
         }
 
         return redirect()
             ->route('admin.showProducts')
-            ->with(['message' => "Продукт \"$product->name\" успешно добавлен!"]);
+            ->with(['message' => "Продукт \"$product->name\" успешно добавлен"]);
     }
+
+
 
     /**
      * @param UpdateRequest $request
      * @param Product $product
      * @return RedirectResponse
      */
-    public function updateProduct(UpdateRequest $request, Product $product)
+    // Редактировать продукт
+    public function updateProduct(UpdateRequest $request, Product $product): RedirectResponse
     {
         $validated = $request->validated();
+        $validated['is_published'] = (bool)$request->get('is_published');
+
+        if ($request->hasFile('images')) {
+            $productImages = [];
+            foreach ($request->file('images') as $file) {
+                $productImages[] = [
+                    'product_id' => $product->id,
+                    'image_path' => $file->store('public/images')
+                ];
+            }
+            ProductImage::query()->insert($productImages);
+        }
+        // для чего это?
+//        if ($request->has('deleted_images')) {
+//            $deletedImages = $request->input('deleted_images');
+//            ProductImage::whereIn('id', $deletedImages)->delete();
+//        }
 
         $product->update($validated);
 
         return redirect()
-            ->route('product.show', $product)
-            ->with(['message' => 'Продукт был изменен!']);
+            ->route('admin.showProducts')
+            ->with(['message' => "Продукт \"$product->name\" успешно отредактирован"]);
     }
+
+
 
     /**
      * @param Product $product
+     * @param Request $request
      * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
-    public function show(Product $product, Request $request)
+    // Страница одного продукта
+    public function show(Product $product, Request $request): \Illuminate\Foundation\Application|View|Factory|Application
     {
+        // для чего это?
 //        $collectionId = $product->collection_id;
 //        $collection = Collection::findOrFail($collectionId);
 
         $collections = Collection::all();
-
         $products = Product::query()->where('is_published', '=', true)->inRandomOrder()->take(10)->get();
 
         if($request->has('collection')) {
@@ -75,5 +114,22 @@ class ProductController extends Controller
         }
 
         return view('pages.single', compact('product', 'products', 'collections'));
+    }
+
+
+
+    // Добавить в корзину
+    public function addToCart(string $id): RedirectResponse
+    {
+        /** @var Product $product */
+        $product = Product::query()->find($id);
+
+        if (is_null($product)) {
+            return back();
+        }
+
+        $this->cartService->add($product);
+
+        return back()->with(['message' => "Продукт добавлен в корзину!"]);
     }
 }

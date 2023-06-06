@@ -57,9 +57,9 @@
             <nav>
                 <a href="/" class="footer__link">Главная</a>
                 <a href="{{ route('page.catalog') }}" class="footer__link">Каталог</a>
-                <a href="#" class="footer__link">Услуги</a>
-                <a href="#" class="footer__link">Контакты</a>
-                <a href="#" class="footer__link">О компании</a>
+                <a href="{{ asset('/#services') }}" class="footer__link">Услуги</a>
+                <a href="{{ asset('#contacts') }}" class="footer__link">Контакты</a>
+                <a href="{{ asset('/#benefits') }}" class="footer__link">О компании</a>
             </nav>
             <div class="contacts">
                 <div>
