@@ -10,6 +10,7 @@ use App\Services\CartService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -42,7 +43,7 @@ class CartController extends Controller
         return back();
     }
 
-    public function orderIndex(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function checkoutIndex(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $cart = $this->cartService;
 
@@ -71,9 +72,9 @@ class CartController extends Controller
         return redirect()->route('page.home')->with('message' . 'Заказ создан!');
     }
 
-    public function store(Request $request)
+    public function checkout(Request $request): JsonResponse
     {
-        if(!Hash::check($request->get('password'), auth()->user()->getAuthPassword())) {
+        if (!Hash::check($request->get('password'), auth()->user()->getAuthPassword())) {
             return response()->json([
                 'message' => 'Введенный пароль недействителен для вашего аккаунта',
                 'status' => false
@@ -118,7 +119,6 @@ class CartController extends Controller
     public function clear(): RedirectResponse
     {
         $this->cartService->clear();
-
         return back();
     }
 

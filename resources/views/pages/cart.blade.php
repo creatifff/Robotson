@@ -82,7 +82,7 @@
                             <span style="white-space: nowrap">{{ $cart->getTotal() }}</span>
                         </div>
                         {{--                        <div class="total__text-shipping"></div>--}}
-                        <a class="cart__order-btn" href="#">К оформлению</a>
+                        <a class="cart__order-btn" href="{{ route('cart.createOrder') }}">К оформлению</a>
                         <a class="clear__cart-btn" href="{{ route('cart.clear') }}">Очистить корзину</a>
                     </div>
                 </div>

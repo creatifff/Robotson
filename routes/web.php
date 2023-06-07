@@ -93,12 +93,10 @@ Route::group([
     Route::get('/personal', 'personalData')->name('personalData');
     // изменить личные данные
     Route::post('/updateData', 'updateData')->name('updateData');
-//    // Страница смены пароля
-//    Route::get('/changePassword', 'changePassword')->name('changePassword');
-//    // сменить пароль
-//    Route::post('/updatePassword', 'updatePassword')->name('updatePassword');
     // Страница с формой добавления товара
     Route::get('/product/create', 'createProduct')->name('createProduct');
+    // Страница с редактированием продукта
+    Route::get('/product/update/{product:id}', 'updateProduct')->name('updateProduct');
     // Страница с формой добавления категории
     Route::get('/collection/create', 'createCollection')->name('createCollection');
     // Страница с пользователями
@@ -107,6 +105,8 @@ Route::group([
     Route::get('/products', 'showProducts')->name('showProducts');
     // Страница с заявками
     Route::get('/requests', 'showRequests')->name('showRequests');
+    // Страница с заказами
+    Route::get('/orders', 'showOrders')->name('showOrders');
 
     // Контроллер продукта
     Route::group([
@@ -119,7 +119,10 @@ Route::group([
         // редактировать
         Route::post('/update/{product:id}', 'updateProduct')->name('updateProduct')->where('id', '[0-9]*');
         // удалить
-        Route::delete('/delete/{product:id}', 'deleteProduct')->name('deleteProduct');
+        Route::post('/delete/{product:id}', 'deleteProduct')->name('deleteProduct');
+        // просмотра продукта в админке
+        Route::get('/{product:id}', 'show')->name('show')->where('id', '[0-9]*');
+
     });
 
     // Контроллер категории
@@ -130,6 +133,10 @@ Route::group([
     ], function () {
         // добавить
         Route::post('/create', 'createCollection')->name('createCollection');
+        // редактировать
+        Route::put('/update/{collection:id}', 'updateCollection')->name('updateCollection');
+        // удалить
+        Route::delete('/delete/{collection:id}', 'deleteCollection')->name('deleteCollection');
     });
 
     // Контроллер корзины
@@ -138,7 +145,7 @@ Route::group([
         'as' => 'order.',
         'prefix' => '/orders',
     ], function () {
-        Route::post('/{orderId}/update', 'update')->name('update');
+        Route::post('/{orderId}/product/{productId}/delete', 'deleteOrderProduct')->name('deleteOrderProduct');
     });
 
 });
@@ -175,8 +182,8 @@ Route::group([
         Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]*');
     });
 
-    Route::get('/order', 'orderIndex')->middleware('auth')->name('orderIndex');
-    Route::get('/create', 'createOrder')->middleware('auth')->name('createOrder');
-    Route::post('/create/order', 'store')->middleware('auth')->name('store');
+    Route::get('/checkout', 'checkoutIndex')->middleware('auth')->name('checkoutIndex');
+    Route::get('/createOrder', 'createOrder')->middleware('auth')->name('createOrder');
+    Route::post('/create/checkout', 'checkout')->middleware('auth')->name('checkout');
 
 });

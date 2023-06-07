@@ -17,63 +17,63 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Сидер пользователей
-        User::query()->create([
-            'name' => 'Роман',
-            'surname' => 'Назыров',
-            'middle_name' => '',
-            'city' => 'Казань',
-            'phone_number' => '+79274156060',
-            'email' => 'rossoroma@mail.ru',
-            'password' => Hash::make('admin2001'),
-            'image_path' => 'public/images/user-img-default.png',
-            'role' => 'admin',
-        ]);
-        User::query()->create([
-            'name' => 'Сол',
-            'surname' => 'Гудман',
-            'middle_name' => '',
-            'city' => 'Сисеро',
-            'phone_number' => '1-505-842-5662',
-            'email' => 'saulgoodman@bcs.com',
-            'password' => Hash::make('654321'),
-            'image_path' => 'public/images/saul.jpg',
-            'role' => 'user',
-        ]);
-        User::query()->create([
-            'name' => 'Уолтер',
-            'surname' => 'Уайт',
-            'middle_name' => 'Хартвелл',
-            'city' => 'Альбукерке',
-            'phone_number' => '1-505-842-5662',
-            'email' => 'walterhwhite@bb.com',
-            'password' => Hash::make('123456'),
-            'image_path' => 'public/images/user-img-default.png',
-            'role' => 'user',
-        ]);
-
-
-        // Сидер категорий
-        Collection::query()->create([
-            'name' => 'Роботы-гуманоиды',
-            'image_path' => 'public/images/humanoids.jpg'
-        ]);
-        Collection::query()->create([
-            'name' => 'Транспортные платформы',
-            'image_path' => 'public/images/transports.jpg'
-        ]);
-        Collection::query()->create([
-            'name' => 'Манипуляторы',
-            'image_path' => 'public/images/manipulators.jpg'
-        ]);
-        Collection::query()->create([
-            'name' => 'Роботы для дома',
-            'image_path' => 'public/images/domrobots.webp'
-        ]);
-        Collection::query()->create([
-            'name' => 'Запчасти',
-            'image_path' => 'public/images/details.jpg'
-        ]);
+//        // Сидер пользователей
+//        User::query()->create([
+//            'name' => 'Роман',
+//            'surname' => 'Назыров',
+//            'middle_name' => '',
+//            'city' => 'Казань',
+//            'phone_number' => '+79274156060',
+//            'email' => 'rossoroma@mail.ru',
+//            'password' => Hash::make('admin2001'),
+//            'image_path' => 'public/images/user-img-default.png',
+//            'role' => 'admin',
+//        ]);
+//        User::query()->create([
+//            'name' => 'Сол',
+//            'surname' => 'Гудман',
+//            'middle_name' => '',
+//            'city' => 'Сисеро',
+//            'phone_number' => '1-505-842-5662',
+//            'email' => 'saulgoodman@bcs.com',
+//            'password' => Hash::make('654321'),
+//            'image_path' => 'public/images/saul.jpg',
+//            'role' => 'user',
+//        ]);
+//        User::query()->create([
+//            'name' => 'Уолтер',
+//            'surname' => 'Уайт',
+//            'middle_name' => 'Хартвелл',
+//            'city' => 'Альбукерке',
+//            'phone_number' => '1-505-842-5662',
+//            'email' => 'walterhwhite@bb.com',
+//            'password' => Hash::make('123456'),
+//            'image_path' => 'public/images/user-img-default.png',
+//            'role' => 'user',
+//        ]);
+//
+//
+//        // Сидер категорий
+//        Collection::query()->create([
+//            'name' => 'Роботы-гуманоиды',
+//            'image_path' => 'public/images/humanoids.jpg'
+//        ]);
+//        Collection::query()->create([
+//            'name' => 'Транспортные платформы',
+//            'image_path' => 'public/images/transports.jpg'
+//        ]);
+//        Collection::query()->create([
+//            'name' => 'Манипуляторы',
+//            'image_path' => 'public/images/manipulators.jpg'
+//        ]);
+//        Collection::query()->create([
+//            'name' => 'Роботы для дома',
+//            'image_path' => 'public/images/domrobots.webp'
+//        ]);
+//        Collection::query()->create([
+//            'name' => 'Запчасти',
+//            'image_path' => 'public/images/details.jpg'
+//        ]);
 
 
         // Сидер продуктов
@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
             'quantity' => 86,
             'price' => 1900000,
             'is_published' => true,
-            'collection_id' => 1
+            'collection_id' => 2
         ]);
 
         ProductImage::query()->create([
@@ -147,7 +147,7 @@ class DatabaseSeeder extends Seeder
             'quantity' => 72,
             'price' => 700000,
             'is_published' => true,
-            'collection_id' => 2
+            'collection_id' => 3
         ]);
 
         ProductImage::query()->create([

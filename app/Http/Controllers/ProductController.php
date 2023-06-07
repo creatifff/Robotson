@@ -24,10 +24,6 @@ class ProductController extends Controller
     }
 
 
-    /**
-     * @param CreateRequest $request
-     * @return RedirectResponse
-     */
     // Создать продукт
     public function createProduct(CreateRequest $request): RedirectResponse
     {
@@ -56,12 +52,6 @@ class ProductController extends Controller
     }
 
 
-
-    /**
-     * @param UpdateRequest $request
-     * @param Product $product
-     * @return RedirectResponse
-     */
     // Редактировать продукт
     public function updateProduct(UpdateRequest $request, Product $product): RedirectResponse
     {
@@ -92,29 +82,34 @@ class ProductController extends Controller
     }
 
 
+    // Удалить продукт
+    public function deleteProduct($id): RedirectResponse
+    {
+        $product = Product::where('id', $id)->firstOrFail();
+        $product->delete();
 
-    /**
-     * @param Product $product
-     * @param Request $request
-     * @return Application|Factory|View|\Illuminate\Foundation\Application
-     */
+        return redirect()
+            ->route('admin.showProducts')
+            ->with(['message' => "Продукт \"$product->name\" удален."]);
+    }
+
+
     // Страница одного продукта
     public function show(Product $product, Request $request): \Illuminate\Foundation\Application|View|Factory|Application
     {
-        // для чего это?
+
 //        $collectionId = $product->collection_id;
 //        $collection = Collection::findOrFail($collectionId);
 
         $collections = Collection::all();
         $products = Product::query()->where('is_published', '=', true)->inRandomOrder()->take(10)->get();
 
-        if($request->has('collection')) {
+        if ($request->has('collection')) {
             $products = $products->where('collection_id', '=', $request->get('collection'));
         }
 
         return view('pages.single', compact('product', 'products', 'collections'));
     }
-
 
 
     // Добавить в корзину
@@ -128,7 +123,6 @@ class ProductController extends Controller
         }
 
         $this->cartService->add($product);
-
         return back()->with(['message' => "Продукт добавлен в корзину!"]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Auth\UpdatePasswordRequest;
 use App\Http\Requests\Auth\UpdateUserRequest;
 use App\Models\Collection;
 use App\Models\Order;
@@ -13,7 +12,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -61,16 +59,21 @@ class AdminController extends Controller
             ->with(['message' => 'Данные обновлены!']);
     }
 
-    public function showUsers(): View|\Illuminate\Foundation\Application|Factory|Application
-    {
-        $users = User::all();
-        return view('pages.admin.users', compact('users'));
-    }
+//    public function showUsers(): View|\Illuminate\Foundation\Application|Factory|Application
+//    {
+//        $users = User::all();
+//        return view('pages.admin.users', compact('users'));
+//    }
 
     public function showProducts(): View|\Illuminate\Foundation\Application|Factory|Application
     {
-        $products = Product::all();
-        return view('pages.admin.products', compact('products'));
+        $collections = Collection::all();
+
+        $products = Product::query();
+
+        $products = $products->paginate(9)->withQueryString();
+
+        return view('pages.admin.products', compact('products', 'collections'));
     }
 
     public function showRequests(): View|\Illuminate\Foundation\Application|Factory|Application
@@ -79,6 +82,7 @@ class AdminController extends Controller
         return view('pages.admin.requests', compact('requests'));
     }
 
+    // Страница с добавлением продукта
     public function createProduct(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         $collections = Collection::all();
@@ -86,17 +90,35 @@ class AdminController extends Controller
         return view('pages.admin.product.create', compact('collections'));
     }
 
+    // Страница с редактированием и удалением продукта
+    public function updateProduct(Product $product): View|\Illuminate\Foundation\Application|Factory|Application
+    {
+        $collectionId = $product->collection_id;
+
+        $collections = Collection::all();
+
+        return view('pages.admin.product.update', compact('product', 'collections', 'collectionId'));
+    }
+
+
     public function createCollection(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         return view('pages.admin.collection.create');
     }
 
+    public function showCollections(Request $request): View|\Illuminate\Foundation\Application|Factory|Application
+    {
+        $collection = Collection::paginate(10);
 
-    public function allOrders(\Illuminate\Http\Request $request): View|\Illuminate\Foundation\Application|Factory|Application
+        return view('pages.admin.collection.collection', compact('collection'));
+    }
+
+
+    public function showOrders(Request $request): View|\Illuminate\Foundation\Application|Factory|Application
     {
         $orders = Order::paginate(5);
         $products = Product::all();
-        $orderStatuses = ['В обработке','Принят','Отменен','Отправлен','Завершен'];
+        $orderStatuses = ['В обработке', 'Принят', 'Отменен', 'Отправлен', 'Завершен'];
 
 
         return view('pages.admin.orders', compact('orders', 'products', 'orderStatuses'));
