@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -16,34 +18,22 @@ class Order extends Model
     ];
 
     // Получение продуктов из заказа
-    public function products()
+    public function products(): HasMany
     {
         return $this->hasMany(OrderProduct::class);
     }
 
     // Получение пользователя из заказа
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     // Форматирование цены в заказе
-    public function totalPrice()
+    public function totalPrice(): string
     {
         return number_format($this->total, 0, ',', ' ') . ' ₽';
     }
 
-//    // Отношение с доставкой
-//    public function delivery()
-//    {
-//        return $this->hasOne(Delivery::class);
-//    }
-
-
-//    // Цена с доставкой
-//    public function priceWithDelivery()
-//    {
-//        return number_format($this->total + $this->delivery->price, 0, ',' , ' ') . ' ₱';
-//    }
 
 }

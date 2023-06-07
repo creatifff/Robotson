@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderCreatedMail;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Services\CartService;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -19,14 +24,14 @@ class CartController extends Controller
         $this->cartService = new CartService();
     }
 
-    public function index(Product $product)
+    public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $cart = $this->cartService;
 
         return view('pages.cart', compact('cart'));
     }
 
-    public function remove(Product $product)
+    public function remove(Product $product): RedirectResponse
     {
         if ($this->cartService->remove($product)) {
             session()->flash('message', 'Продукт был удален');
@@ -37,14 +42,14 @@ class CartController extends Controller
         return back();
     }
 
-    public function orderIndex()
+    public function orderIndex(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $cart = $this->cartService;
 
         return view('pages.order', compact('cart'));
     }
 
-    public function createOrder()
+    public function createOrder(): RedirectResponse
     {
         if ($this->cartService->isEmpty()) {
             return back()->withErrors(['empty', 'Корзина пуста']);
@@ -61,16 +66,9 @@ class CartController extends Controller
             ]);
         }
 
-//        Mail::to(auth()->user()->email)->send(new \App\Mail\OrderCreatedMail($order));
-//
-//        return redirect()->route('page.home')->with('message' . 'Заказ успешно создан!');
-    }
+        Mail::to(auth()->user()->email)->send(new OrderCreatedMail($order));
 
-    public function clear()
-    {
-        $this->cartService->clear();
-
-        return back();
+        return redirect()->route('page.home')->with('message' . 'Заказ создан!');
     }
 
     public function store(Request $request)
@@ -106,16 +104,22 @@ class CartController extends Controller
 
 //        $user = auth()->user();
 
-//        Mail::to(auth()->user()->email)->send(new \App\Mail\OrderCreatedMail($order));
-////        Mail::to($user->email)->send(new \App\Mail\OrderCreatedMail($order));
-//
-//        return response()->json([
-//            'message', 'Order has been created',
-//            'status' => true,
-//            'redirect_url' => route('page.home')
-//        ]);
+        Mail::to(auth()->user()->email)->send(new OrderCreatedMail($order));
+//        Mail::to($user->email)->send(new OrderCreatedMail($order));
+
+        return response()->json([
+            'message', 'Заказ оформлен!',
+            'status' => true,
+            'redirect_url' => route('page.home')
+        ]);
 
     }
 
+    public function clear(): RedirectResponse
+    {
+        $this->cartService->clear();
+
+        return back();
+    }
 
 }

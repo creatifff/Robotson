@@ -5,7 +5,7 @@ namespace App\Http\Requests\Collection;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCollectionRequest extends FormRequest
+class UpdateCollectionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,8 @@ class CreateCollectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3',
-            'image_path' => 'nullable|mimes:jpg,png,jpeg,webp|max:5000'
+            'name' => 'required|min:2',
+            'image_path' => 'nullable|mimes:jpg,png,jpeg,webp'
         ];
     }
 
@@ -32,9 +32,8 @@ class CreateCollectionRequest extends FormRequest
     {
         return [
             'name.required' => 'Введите название категории',
-            'name.min' => 'В названии не менее 3-х символов',
+            'name.min' => 'В названии минимум 2 символа',
             'image_path.mimes' => 'Допустимые форматы: .png, .jpg, .webp',
-            'image_path.max' => 'Размер изображения не должен превышать 5 MB',
         ];
     }
 }

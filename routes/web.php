@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CollectionController;
@@ -74,6 +75,8 @@ Route::group([
     Route::get('/changePassword', 'changePassword')->name('changePassword');
     // сменить пароль
     Route::post('/updatePassword', 'updatePassword')->name('updatePassword');
+    // Страница с заказами
+    Route::get('/orders', 'orders')->name('orders');
 });
 
 
@@ -115,6 +118,8 @@ Route::group([
         Route::post('/create', 'createProduct')->name('createProduct');
         // редактировать
         Route::post('/update/{product:id}', 'updateProduct')->name('updateProduct')->where('id', '[0-9]*');
+        // удалить
+        Route::delete('/delete/{product:id}', 'deleteProduct')->name('deleteProduct');
     });
 
     // Контроллер категории
@@ -126,6 +131,16 @@ Route::group([
         // добавить
         Route::post('/create', 'createCollection')->name('createCollection');
     });
+
+    // Контроллер корзины
+    Route::group([
+        'controller' => OrderController::class,
+        'as' => 'order.',
+        'prefix' => '/orders',
+    ], function () {
+        Route::post('/{orderId}/update', 'update')->name('update');
+    });
+
 });
 
 
@@ -137,9 +152,8 @@ Route::group([
 ], function () {
     // Страница одного продукта
     Route::get('/{product:id}', 'show')->name('show')->where('id', '[0-9]*');
-//    Route::get('/{product:name}', 'show')->name('show');
     // добавить в корзину
-    Route::get('/{id}/addToCart', 'addToCart')->name('addToCart');
+    Route::get('/{id}/addToCart', 'addToCart')->name('addToCart')->where('id', '[0-9]*');
 });
 
 
@@ -152,4 +166,17 @@ Route::group([
     Route::get('/', 'index')->name('index');
     Route::get('/{product:id}/remove', 'remove')->name('remove');
     Route::get('/clear', 'clear')->name('clear');
+
+    Route::group([
+        'controller' => ProductController::class,
+        'as' => 'product.',
+        'prefix' => '/product'
+    ], function () {
+        Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]*');
+    });
+
+    Route::get('/order', 'orderIndex')->middleware('auth')->name('orderIndex');
+    Route::get('/create', 'createOrder')->middleware('auth')->name('createOrder');
+    Route::post('/create/order', 'store')->middleware('auth')->name('store');
+
 });

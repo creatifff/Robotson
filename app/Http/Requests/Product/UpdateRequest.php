@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Product;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
@@ -11,18 +12,39 @@ class UpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check() && auth()->user()->isAdmin();
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|min:3|max:50',
+            'text' => 'nullable|min:3',
+            'price' => 'required|numeric|min:1',
+            'quantity' => 'nullable|numeric',
+            'collection_id' => 'required|exists:collections,id',
+            'image_path' => 'nullable|mimes:jpg,png,jpeg,webp,svg'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Введите название продукта',
+            'name.min' => 'Минимум 3 символа',
+            'name.max' => 'Максимум 50 символов',
+            'text.min' => 'В описании минимум 3 символа',
+            'price.required' => 'Введите стоимость',
+            'price.numeric' => 'Только числовое значение',
+            'price.min' => 'Минимум 1 ₽',
+            'quantity.numeric' => 'Только числовое значение',
+            'collection_id.required' => 'Выберите категорию',
+            'image_path.mimes' => 'Недопустимый формат. Загрузите фото в .png, .jpg или .webp',
         ];
     }
 }

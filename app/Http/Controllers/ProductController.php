@@ -24,7 +24,6 @@ class ProductController extends Controller
     }
 
 
-
     /**
      * @param CreateRequest $request
      * @return RedirectResponse
@@ -53,7 +52,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('admin.showProducts')
-            ->with(['message' => "Продукт \"$product->name\" успешно добавлен"]);
+            ->with(['message' => "Продукт \"$product->name\" добавлен."]);
     }
 
 
@@ -79,17 +78,17 @@ class ProductController extends Controller
             }
             ProductImage::query()->insert($productImages);
         }
-        // для чего это?
-//        if ($request->has('deleted_images')) {
-//            $deletedImages = $request->input('deleted_images');
-//            ProductImage::whereIn('id', $deletedImages)->delete();
-//        }
+
+        if ($request->has('deleted_images')) {
+            $deletedImages = $request->input('deleted_images');
+            ProductImage::whereIn('id', $deletedImages)->delete();
+        }
 
         $product->update($validated);
 
         return redirect()
             ->route('admin.showProducts')
-            ->with(['message' => "Продукт \"$product->name\" успешно отредактирован"]);
+            ->with(['message' => "Продукт \"$product->name\" обновлен."]);
     }
 
 

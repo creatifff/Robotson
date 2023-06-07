@@ -45,7 +45,7 @@
             <div class="profile__menu">
                 <a href="{{ route('account.index') }}" class="profile__menu-btn">Главная</a>
                 <a href="{{ route('account.personalData') }}" class="profile__menu-btn">Мои данные</a>
-                <a href="#" class="profile__menu-btn">Мои заказы</a>
+                <a href="{{ route('account.orders') }}" class="profile__menu-btn">Мои заказы</a>
                 <a href="{{ route('account.changePassword') }}" class="profile__menu-btn">Смена пароля</a>
                 <hr>
                 <a href="{{ route('auth.logoutUser') }}" class="profile__menu-btn">Выйти</a>
