@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Storage;
 
 class ProductImage extends Model
@@ -22,7 +24,7 @@ class ProductImage extends Model
     }
 
     // Получение картинки продукта
-    public function path()
+    public function path(): Application|string|UrlGenerator|\Illuminate\Contracts\Foundation\Application
     {
         return url('public' . Storage::url($this->image_path));
     }

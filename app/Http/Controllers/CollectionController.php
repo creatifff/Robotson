@@ -6,7 +6,6 @@ use App\Http\Requests\Collection\CreateCollectionRequest;
 use App\Http\Requests\Collection\UpdateCollectionRequest;
 use App\Models\Collection;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class CollectionController extends Controller
 {
@@ -15,38 +14,39 @@ class CollectionController extends Controller
     {
         $validated = $request->validated();
 
-        if($request->hasFile('image_path')) {
+        if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('public/images');
         }
 
         $collection = Collection::query()->create($validated);
 
-        return redirect()->route('admin.index')->with(['message' => "Категория \"$collection->name\" добавлена."]);
+        return redirect()->route('admin.showCollections')->with(['message' => "Категория \"$collection->name\" добавлена."]);
     }
 
     // Редактировать категорию
-    public function updateCollection(UpdateCollectionRequest $request): RedirectResponse
+    public function updateCollection(UpdateCollectionRequest $request, Collection $collection): RedirectResponse
     {
         $validated = $request->validated();
 
-        if($request->hasFile('image_path')) {
+        if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('public/images');
         }
 
-        $collection = Collection::query()->update($validated);
+        $collection->update($validated);
 
         return redirect()
-            ->route('admin.index')
+            ->back()
             ->with(['message' => "Категория \"$collection->name\" обновлена."]);
     }
 
     // Удаление категории
-    public function deleteCollection(Collection $collection): RedirectResponse
+    public function deleteCollection($id): RedirectResponse
     {
-        $collection = Collection::query()->delete();
+        $collection = Collection::where('id', $id)->firstOrFail();
+        $collection->delete();
 
         return redirect()
-            ->route('admin.index')
+            ->route('admin.showCollections')
             ->with(['message' => "Категория \"$collection->name\" удалена."]);
     }
 

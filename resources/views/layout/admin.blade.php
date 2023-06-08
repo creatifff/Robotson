@@ -55,10 +55,18 @@
                         </li>
                     </ul>
                 </div>
-                <a href="{{ route('admin.showProducts') }}" class="profile__menu-btn">Список продуктов</a>
-                <a href="{{ route('admin.showUsers') }}" class="profile__menu-btn">Список пользователей</a>
+                <div class="dropend">
+                    <button class="profile__menu-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                        Редактирование
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('admin.showProducts') }}">Продукты</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.showCollections') }}">Категории</a>
+                        </li>
+                    </ul>
+                </div>
                 <a href="#" class="profile__menu-btn">Заказы</a>
-                <a href="{{ route('admin.showRequests') }}" class="profile__menu-btn">Заявки на услуги</a>
+                <a href="{{ route('admin.showRequests') }}" class="profile__menu-btn">Заявки</a>
                 <hr>
                 <a href="{{ route('auth.logoutUser') }}" class="profile__menu-btn">Выйти</a>
             </div>

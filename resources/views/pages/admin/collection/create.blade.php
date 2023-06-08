@@ -1,6 +1,6 @@
 @extends('layout.admin')
 
-@section('title', 'Добавить продукт')
+@section('title', 'Добавить категорию')
 
 @section('content')
     <h3 class="profile__action-title">Добавление новой категории</h3>
@@ -22,7 +22,7 @@
         </div>
         <div class="form__input-row">
             <div class="form__input-column">
-                <label for="image_path">Добавьте фото к новой категории</label>
+                <label for="image_path">Картинка категории</label>
                 <input class="is-invalid" type="file" id="image_path" name="image_path">
                 @error('image_path')
                 <div class="invalid-feedback">

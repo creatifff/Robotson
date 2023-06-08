@@ -77,7 +77,7 @@ class ProductController extends Controller
         $product->update($validated);
 
         return redirect()
-            ->route('admin.showProducts')
+            ->back()
             ->with(['message' => "Продукт \"$product->name\" обновлен."]);
     }
 

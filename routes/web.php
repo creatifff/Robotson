@@ -99,10 +99,14 @@ Route::group([
     Route::get('/product/update/{product:id}', 'updateProduct')->name('updateProduct');
     // Страница с формой добавления категории
     Route::get('/collection/create', 'createCollection')->name('createCollection');
+    // Страница с редактированием категории
+    Route::get('/collection/update/{collection:id}', 'updateCollection')->name('updateCollection');
     // Страница с пользователями
     Route::get('/users', 'showUsers')->name('showUsers');
     // Страница с продуктами
     Route::get('/products', 'showProducts')->name('showProducts');
+    // Страница с категориями
+    Route::get('/collections', 'showCollections')->name('showCollections');
     // Страница с заявками
     Route::get('/requests', 'showRequests')->name('showRequests');
     // Страница с заказами
@@ -117,9 +121,9 @@ Route::group([
         // добавить
         Route::post('/create', 'createProduct')->name('createProduct');
         // редактировать
-        Route::post('/update/{product:id}', 'updateProduct')->name('updateProduct')->where('id', '[0-9]*');
+        Route::put('/update/{product:id}', 'updateProduct')->name('updateProduct')->where('id', '[0-9]*');
         // удалить
-        Route::post('/delete/{product:id}', 'deleteProduct')->name('deleteProduct');
+        Route::delete('/delete/{product:id}', 'deleteProduct')->name('deleteProduct');
         // просмотра продукта в админке
         Route::get('/{product:id}', 'show')->name('show')->where('id', '[0-9]*');
 
@@ -134,12 +138,12 @@ Route::group([
         // добавить
         Route::post('/create', 'createCollection')->name('createCollection');
         // редактировать
-        Route::put('/update/{collection:id}', 'updateCollection')->name('updateCollection');
+        Route::put('/update/{collection:id}', 'updateCollection')->name('updateCollection')->where('id', '[0-9]*');
         // удалить
         Route::delete('/delete/{collection:id}', 'deleteCollection')->name('deleteCollection');
     });
 
-    // Контроллер корзины
+    // Контроллер заказа
     Route::group([
         'controller' => OrderController::class,
         'as' => 'order.',

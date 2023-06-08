@@ -11,6 +11,7 @@
         enctype="multipart/form-data"
     >
         @csrf
+        @method('PUT')
         <div class="form__block">
             <div class="form__input-column">
                 <label for="name">Название</label>
@@ -31,7 +32,7 @@
                 @enderror
             </div>
             <div class="form__input-column">
-                <label for="quantity">Кол-во штук</label>
+                <label for="quantity">Кол-во</label>
                 <input value="{{ $product->quantity }}" class="form__input is-invalid" min="0" type="number" name="quantity" id="quantity">
                 @error('quantity')
                 <div class="invalid-feedback">
@@ -72,7 +73,7 @@
                 @enderror
             </div>
             <div class="form__input-column">
-                <label for="image_path">Добавьте несколько фото к продукту</label>
+                <label for="image_path">Изменить фото продукта</label>
                 <input
                     class="is-invalid"
                     type="file"
@@ -127,6 +128,7 @@
     </form>
     <form action="{{ route('admin.product.deleteProduct', $product->id) }}" method="post">
         @csrf
+        @method('DELETE')
         <button type="submit">Удалить продукт</button>
     </form>
 @endsection

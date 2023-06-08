@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -42,14 +43,15 @@ class User extends Authenticatable
     ];
 
     // Получение аватарки пользователя
-    public function imageUrl() {
+    public function imageUrl(): Application|string|UrlGenerator|\Illuminate\Contracts\Foundation\Application
+    {
         return url('public' . Storage::url($this->image_path));
     }
 
     // Получение полного имени
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
-        if($this->middle_name) {
+        if ($this->middle_name) {
             return $this->name . ' ' . $this->middle_name . ' ' . $this->surname;
         }
 
@@ -57,13 +59,13 @@ class User extends Authenticatable
     }
 
     // Проверка на админа
-    public function isAdmin():bool
+    public function isAdmin(): bool
     {
         return $this->role === self::IS_ADMIN;
     }
 
     // Дата регистрации пользователя
-    public function createdDate()
+    public function createdDate(): string
     {
         return date('d.m.Y', strtotime($this->created_at));
     }

@@ -65,16 +65,7 @@ class AdminController extends Controller
 //        return view('pages.admin.users', compact('users'));
 //    }
 
-    public function showProducts(): View|\Illuminate\Foundation\Application|Factory|Application
-    {
-        $collections = Collection::all();
 
-        $products = Product::query();
-
-        $products = $products->paginate(9)->withQueryString();
-
-        return view('pages.admin.products', compact('products', 'collections'));
-    }
 
     public function showRequests(): View|\Illuminate\Foundation\Application|Factory|Application
     {
@@ -82,37 +73,54 @@ class AdminController extends Controller
         return view('pages.admin.requests', compact('requests'));
     }
 
+
+    // Страница со всеми продуктами
+    public function showProducts(): View|\Illuminate\Foundation\Application|Factory|Application
+    {
+        $collections = Collection::all();
+        $products = Product::query();
+        $products = $products->paginate(9)->withQueryString();
+        return view('pages.admin.products', compact('products', 'collections'));
+    }
+
+
     // Страница с добавлением продукта
     public function createProduct(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         $collections = Collection::all();
-
         return view('pages.admin.product.create', compact('collections'));
     }
+
 
     // Страница с редактированием и удалением продукта
     public function updateProduct(Product $product): View|\Illuminate\Foundation\Application|Factory|Application
     {
         $collectionId = $product->collection_id;
-
         $collections = Collection::all();
-
         return view('pages.admin.product.update', compact('product', 'collections', 'collectionId'));
     }
 
 
+
+    // Страница со всеми категориями
+    public function showCollections(): View|\Illuminate\Foundation\Application|Factory|Application
+    {
+        $collections = Collection::query();
+        $collections = $collections->paginate(10)->withQueryString();
+        return view('pages.admin.collections', compact('collections'));
+    }
+
+    // Страница с добавлением категории
     public function createCollection(): View|\Illuminate\Foundation\Application|Factory|Application
     {
         return view('pages.admin.collection.create');
     }
 
-    public function showCollections(Request $request): View|\Illuminate\Foundation\Application|Factory|Application
+    // Страница с редактированием и удалением категории
+    public function updateCollection(Collection $collection): View|\Illuminate\Foundation\Application|Factory|Application
     {
-        $collection = Collection::paginate(10);
-
-        return view('pages.admin.collection.collection', compact('collection'));
+        return view('pages.admin.collection.update', compact('collection'));
     }
-
 
     public function showOrders(Request $request): View|\Illuminate\Foundation\Application|Factory|Application
     {
