@@ -3,22 +3,34 @@
 @section('title', 'Все категории')
 
 @section('content')
-    <h3 class="profile__action-title">Категории:</h3>
-
     @if($collections->count())
-
-        <div class="users__content">
+        <table>
+            <thead class="hidden-phone">
+            <tr>
+                <th class="table-cell__left">Категория</th>
+                <th class="table-cell__right">Дата создания</th>
+            </tr>
+            </thead>
+            <tbody>
             @foreach($collections as $collection)
-                <div>
-                    <h4>{{ $collection->name }}</h4>
-                    <p>{{ $collection->created_at }}</p>
-                    <p>{{ $collection->updated_at }}</p>
-                    <a href="{{ route('admin.collection.updateCollection', $collection) }}">
-                        Редактировать
-                    </a>
-                </div>
+                <tr>
+                    <td class="line-item__product-info left">
+                        <div>
+                            <h4>{{ $collection->name }}</h4>
+                        </div>
+                    </td>
+                    <td class="line-item__product-info end">
+                        <div>
+                            <p>{{ $collection->createdDate() }}</p>
+                            <a class="admin-edit-btn" href="{{ route('admin.collection.updateCollection', $collection) }}">
+                                Редактировать
+                            </a>
+                        </div>
+                    </td>
+                </tr>
             @endforeach
-        </div>
+            </tbody>
+        </table>
 
     @else
         <div class="orders__empty">

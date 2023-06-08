@@ -500,6 +500,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .form__textarea {
+    border-radius: 7px;
     background: none;
     outline: none;
     color: #fff;
@@ -935,10 +936,10 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .profile__grid {
-    display: grid;
+    display: flex;
     margin: 70px 0;
-    gap: 200px;
-    grid-template-columns: 1fr 3fr;
+    position: relative;
+    gap: 150px;
 }
 
 .profile__menu {
@@ -947,6 +948,9 @@ h1, h2, h3, h4, h5, h6, p {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 350px;
+    position: sticky;
+    top: 110px;
     border-radius: 20px;
     height: fit-content;
 }
@@ -975,6 +979,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .profile__action {
+    width: 100%;
     padding: 25px 40px;
     border-radius: 15px;
     background-color: #1b1b1b;
@@ -1141,7 +1146,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
-
 /* Single page styles */
 
 .single__product-content {
@@ -1165,6 +1169,7 @@ h1, h2, h3, h4, h5, h6, p {
     border-radius: 10px;
     border: 1px solid #e7e7e7;
 }
+
 .product-text__content {
     color: #0e0e0e;
     padding: 20px 40px;
@@ -1277,7 +1282,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
-
 /* Account page styles */
 
 .form.form-personal-data {
@@ -1315,15 +1319,18 @@ h1, h2, h3, h4, h5, h6, p {
     overflow: hidden;
     opacity: 0;
 }
+
 .form-image-block span {
     color: #406ec1;
     cursor: pointer;
     transition: all .1s ease-in-out;
     font-size: 14px;
 }
+
 .form-image-block span:hover {
     color: #fff;
 }
+
 .form-image-block p {
     margin-bottom: 5px;
 }
@@ -1336,7 +1343,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
-
 /* Cart page styles */
 
 .cart__content {
@@ -1346,32 +1352,36 @@ h1, h2, h3, h4, h5, h6, p {
     margin-top: 70px;
 }
 
-.cart__inner table {
+table {
     width: 100%;
     text-align: left;
     border-collapse: collapse;
     border-spacing: 0;
     color: #0e0e0e;
 }
-.cart__inner table th {
+
+table th {
     padding: 15px 30px;
     font-weight: 400;
     font-size: 14px;
 }
 
-.cart__inner table .table-cell__left {
+table .table-cell__left {
     padding-left: 30px;
 }
 
-.cart__inner table .table-cell__center {
+table .table-cell__center {
     text-align: center;
 }
-.cart__inner table tbody tr {
+
+table tbody tr {
     border-top: 1px solid #e7e7e7;
 }
-.cart__inner tbody td {
+
+tbody td {
     padding: 26px 30px;
 }
+
 .table-cell__right {
     text-align: right;
 }
@@ -1387,6 +1397,7 @@ h1, h2, h3, h4, h5, h6, p {
     flex-direction: column;
     justify-content: end;
 }
+
 .table__cell-block span {
     font-weight: 500;
 }
@@ -1429,11 +1440,13 @@ h1, h2, h3, h4, h5, h6, p {
     align-items: center;
     gap: 20px;
 }
+
 .cart-product img {
     width: 90px;
     height: 90px;
     object-fit: contain;
 }
+
 .cart-product .cart-product__info {
     display: flex;
     flex-direction: column;
@@ -1444,25 +1457,30 @@ h1, h2, h3, h4, h5, h6, p {
     font-weight: 600;
     font-size: 16px;
 }
+
 .cart-product-category {
     font-weight: 500;
     color: #5c636a;
     font-size: 13px;
     text-transform: uppercase;
 }
+
 .cart-product-qty {
     text-align: center;
     font-weight: 500;
     font-size: 14px;
 }
+
 .cart-product-price {
     font-weight: 500;
     font-size: 14px;
 }
+
 .cart-product-price.total {
     font-weight: 400;
     font-size: 16px;
 }
+
 .cart__content table tbody tr td:last-child {
     text-align: end;
 }
@@ -1527,22 +1545,24 @@ h1, h2, h3, h4, h5, h6, p {
     height: 80px;
     margin-bottom: 10px;
 }
+
 .cart-if-empty h6 {
     font-size: 26px;
     font-weight: 600;
     color: #0e0e0e;
     margin-bottom: 15px;
 }
+
 .cart-if-empty p {
     color: #0e0e0e;
     font-size: 16px;
     font-weight: 400;
     margin-bottom: 10px;
 }
+
 .cart-if-empty a {
     width: 230px;
 }
-
 
 
 /* User orders page styles */
@@ -1571,10 +1591,153 @@ h1, h2, h3, h4, h5, h6, p {
 .catalog__order-btn:hover {
     background-color: #1f5489;
 }
+
 .orders__empty p {
     font-size: 14px;
     font-weight: 400;
     color: #909396;
     margin-bottom: 10px;
 }
+
+
+/* Update products/categories page styles */
+
+
+.profile__action table {
+    color: #fff;
+}
+
+.profile__action table tbody td {
+    padding: 15px 10px;
+}
+
+.profile__action table th {
+    padding: 15px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9a9a9a;
+}
+
+.profile__action td h4 {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.admin-edit-btn {
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all .1s ease-in-out;
+}
+
+.admin-edit-btn:hover {
+    color: #406ec1;
+}
+
+.collection-name {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.price-name {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.profile__action .line-item__product-info.left {
+    text-align: left;
+}
+
+.profile__action .line-item__product-info.center {
+    text-align: center;
+}
+
+.profile__action .line-item__product-info.end {
+    text-align: end;
+}
+
+.form-block.edit {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 50px;
+}
+
+.form-block.edit .form__block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.admin-gallery {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: grid;
+    row-gap: 10px;
+    column-gap: 24px;
+    grid-template-columns: repeat(2, 100px);
+}
+
+.admin-gallery .image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.form-row-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.span-label {
+    font-size: 14px;
+    color: #adadad;
+}
+
+.admin-delete-btn {
+    background: none;
+    outline: none;
+    border: none;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all .2s ease-in-out;
+}
+
+.admin-delete-btn:hover {
+    color: #980000;
+}
+
+.delete-product-form {
+    display: flex;
+    justify-content: end;
+}
+
+.form__input-column.file-input-hidden input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.form__input-column.file-input-hidden span {
+    color: #406ec1;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.form__input-column.file-input-hidden span:hover {
+    color: #fff;
+}
+
 

@@ -28,14 +28,16 @@
             @enderror
         </div>
         <div class="form__input-row">
-            <div class="form__input-column">
-                <label for="image_path">Изменить картинку категории</label>
-                <input
-                    class="is-invalid"
-                    type="file"
-                    id="image_path"
-                    name="image_path"
-                >
+            <div class="form__input-column file-input-hidden">
+                <label for="image_path">
+                    <input
+                        class="is-invalid"
+                        type="file"
+                        id="image_path"
+                        name="image_path"
+                    >
+                    <span>Изменить картинку категории</span>
+                </label>
                 @error('image_path')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -46,7 +48,7 @@
                 <span>Картинка категории:</span>
                 <img src="{{ $collection->image() }}" alt="{{ $collection->name }}" class="personal__photo">
             </div>
-            <button class="form__btn" type="submit">Изменить</button>
+            <button class="form__btn" type="submit">Сохранить</button>
         </div>
     </form>
     <form action="{{ route('admin.collection.deleteCollection', $collection->id) }}" method="post">

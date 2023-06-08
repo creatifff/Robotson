@@ -29,4 +29,9 @@ class Collection extends Model
     {
         return url('public' . Storage::url($this->image_path));
     }
+
+    public function createdDate(): string
+    {
+        return date('d.m.Y', strtotime($this->created_at));
+    }
 }

@@ -21,9 +21,17 @@
             @enderror
         </div>
         <div class="form__input-row">
-            <div class="form__input-column">
-                <label for="image_path">Картинка категории</label>
-                <input class="is-invalid" type="file" id="image_path" name="image_path">
+            <div class="form__input-column file-input-hidden">
+                <label for="image_path">
+                    <input
+                        class="is-invalid"
+                        type="file"
+                        id="image_path"
+                        name="image_path"
+                    >
+                    <span>Добавьте картинку категории</span>
+                </label>
+
                 @error('image_path')
                 <div class="invalid-feedback">
                     {{ $message }}

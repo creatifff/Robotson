@@ -38,4 +38,9 @@ class Product extends Model
         return $this->belongsTo(Collection::class);
     }
 
+    public function createdDate(): string
+    {
+        return date('d.m.Y', strtotime($this->created_at));
+    }
+
 }

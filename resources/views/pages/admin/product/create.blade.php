@@ -66,9 +66,17 @@
                 </div>
                 @enderror
             </div>
-            <div class="form__input-column">
-                <label for="image_path">Добавьте несколько фото к продукту</label>
-                <input class="is-invalid" type="file" id="image_path" name="images[]" multiple>
+            <div class="form__input-column file-input-hidden">
+                <label for="image_path">
+                    <input
+                        class="is-invalid"
+                        type="file" id="image_path"
+                        name="images[]"
+                        multiple
+                    >
+                    <span>Добавьте несколько фото к продукту</span>
+                </label>
+
                 @error('image_path')
                 <div class="invalid-feedback">
                     {{ $message }}
