@@ -3,7 +3,7 @@
 @section('title', 'Редактирование')
 
 @section('content')
-    <h3 class="profile__action-title">{{ $product->name }}</h3>
+    <h3 class="profile__action-title">Редактирование: {{ $product->name }}</h3>
     <form
         action="{{ route('admin.product.updateProduct', $product) }}"
         class="form gray-bg"

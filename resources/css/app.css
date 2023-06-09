@@ -1740,4 +1740,32 @@ tbody td {
     color: #fff;
 }
 
+.form__img-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form__img-block .category-img {
+    width: 350px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.admin-request-no-question {
+    font-size: 12px;
+    color: #6c757d;
+    text-align: end;
+    white-space: nowrap;
+}
+
+.admin-request-question {
+    font-size: 13px;
+    color: #e7e7e7;
+    text-align: end;
+}
+
 

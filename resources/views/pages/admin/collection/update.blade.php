@@ -3,7 +3,7 @@
 @section('title', 'Редактирование категории')
 
 @section('content')
-    <h3 class="profile__action-title">{{ $collection->name }}</h3>
+    <h3 class="profile__action-title">Редактирование: {{ $collection->name }}</h3>
     <form
         action="{{ route('admin.collection.updateCollection', $collection) }}"
         class="form gray-bg"
@@ -27,7 +27,7 @@
             </div>
             @enderror
         </div>
-        <div class="form__input-row">
+        <div class="form-row-block">
             <div class="form__input-column file-input-hidden">
                 <label for="image_path">
                     <input
@@ -44,16 +44,16 @@
                 </div>
                 @enderror
             </div>
-            <div class="form-image-block">
-                <span>Картинка категории:</span>
-                <img src="{{ $collection->image() }}" alt="{{ $collection->name }}" class="personal__photo">
-            </div>
             <button class="form__btn" type="submit">Сохранить</button>
         </div>
+        <div class="form__img-block">
+            <img src="{{ $collection->image() }}" alt="{{ $collection->name }}" class="category-img">
+        </div>
     </form>
-    <form action="{{ route('admin.collection.deleteCollection', $collection->id) }}" method="post">
+    <form class="delete-product-form" action="{{ route('admin.collection.deleteCollection', $collection->id) }}"
+          method="post">
         @csrf
         @method('DELETE')
-        <button type="submit">Удалить категорию</button>
+        <button class="admin-delete-btn" type="submit">Удалить категорию</button>
     </form>
 @endsection
