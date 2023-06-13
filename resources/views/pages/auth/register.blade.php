@@ -69,7 +69,7 @@
 
                     <label>
                         <input class=" @error('rules') is-invalid @enderror" type="checkbox" name="rules">
-                        Я принимаю правила регистрации и даю согласие на обработку своих данных
+                        Я принимаю правила регистрации и даю согласие на обработку своих данных *
                         @error('rules')
                         <div class="invalid-feedback">
                             {{ $message }}
