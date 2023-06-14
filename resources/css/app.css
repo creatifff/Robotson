@@ -46,6 +46,7 @@ h1, h2, h3, h4, h5, h6, p {
 @font-face {
     font-family: 'Classic Robot';
     src: url("../fonts/Classic Robot.otf");
+    font-display: swap;
 }
 
 .container__main {

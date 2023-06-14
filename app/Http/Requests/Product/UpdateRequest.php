@@ -23,7 +23,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3|max:50',
+            'name' => 'required|min:3',
             'text' => 'nullable|min:3',
             'price' => 'required|numeric|min:1',
             'quantity' => 'nullable|numeric',
@@ -37,7 +37,6 @@ class UpdateRequest extends FormRequest
         return [
             'name.required' => 'Введите название продукта',
             'name.min' => 'Минимум 3 символа',
-            'name.max' => 'Максимум 50 символов',
             'text.min' => 'В описании минимум 3 символа',
             'price.required' => 'Введите стоимость',
             'price.numeric' => 'Только числовое значение',

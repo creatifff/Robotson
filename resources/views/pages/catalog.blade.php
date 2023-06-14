@@ -42,8 +42,7 @@
                             <div class="item__image">
                                 <a href="{{ route('product.show', $product) }}">
                                     @if($product->images()->count() > 0)
-                                        <img class="item-img" src="{{ $product->images()->first()->path() }}"
-                                             alt="{{ $product->name }}">
+                                        <img class="item-img" src="{{ $product->images()->first()->path() }}" alt="{{ $product->name }}">
                                     @endif
                                 </a>
                             </div>
@@ -52,18 +51,13 @@
                                     <h4 class="item-category">{{ $product->collection->name }}</h4>
                                 </div>
                                 <div class="item__name">
-                                    <a href="{{ route('product.show', $product) }}">
-                                        <h3 class="item-name">{{ $product->name }}</h3>
-                                    </a>
+                                    <a href="{{ route('product.show', $product) }}"><h3 class="item-name">{{ $product->name }}</h3></a>
                                 </div>
                                 <div class="item__price">
                                     <p class="item-price">{{ $product->money() }}</p>
                                 </div>
                                 <div class="item__btns-content">
                                     <a class="item__btn btn-transparent" href="{{ route('product.addToCart', $product) }}">В корзину</a>
-                                    {{--                                    <a class="item__btn to-favourite-btn" href="#">--}}
-                                    {{--                                        <i class="fa-solid fa-heart"></i>--}}
-                                    {{--                                    </a>--}}
                                 </div>
                             </div>
                         </div>

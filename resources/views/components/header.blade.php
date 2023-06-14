@@ -36,7 +36,7 @@
             <nav class="header__nav">
                 @guest
                     <div class="dropdown">
-                        <button class="header__nav-btn" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
+                        <button class="header__nav-btn" id="dropdownMenuLink" data-bs-toggle="dropdown">
                             <i class="fa-solid fa-door-open"></i>
                             <span class="header__nav-btn__name">Вход</span>
                         </button>
@@ -48,9 +48,9 @@
                     </div>
                 @endguest
                 @auth
-                    @if(auth()->user()->role === 'user')
+                    @if(!auth()->user()->isAdmin())
                         <div class="dropdown">
-                            <button class="header__nav-btn" role="button" id="dropdownMenuLink"
+                            <button class="header__nav-btn" id="dropdownMenuLink"
                                     data-bs-toggle="dropdown">
                                 <img class="user-img" src="{{ auth()->user()->imageUrl() }}" alt="user-img">
                                 <span class="header__nav-btn__name">Кабинет</span>
@@ -67,7 +67,7 @@
                         </div>
                     @else
                         <div class="dropdown">
-                            <button class="header__nav-btn" role="button" id="dropdownMenuLink"
+                            <button class="header__nav-btn" id="dropdownMenuLink"
                                     data-bs-toggle="dropdown">
                                 <img class="user-img" src="{{ auth()->user()->imageUrl() }}" alt="user-img">
                                 <span class="header__nav-btn__name">Админ панель</span>
@@ -87,13 +87,6 @@
                         </div>
                     @endif
                 @endauth
-
-{{--                <a href="#">--}}
-{{--                    <div class="header__nav-btn">--}}
-{{--                        <i class="fa-solid fa-heart"></i>--}}
-{{--                        <p class="header__nav-btn__name">Избранное</p>--}}
-{{--                    </div>--}}
-{{--                </a>--}}
                 <a href="{{ route('cart.index') }}">
                     <div class="header__nav-btn">
                         <i class="fa-solid fa-cart-shopping"></i>
