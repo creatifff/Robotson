@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@section('meta-description', 'Robotson - магазин роботов от производителя. Найдите лучшего робота под свои задачи в Robotson')
+
 @section('title', 'Главная')
 
 @section('content')

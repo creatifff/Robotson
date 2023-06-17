@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="@yield('meta-description')">
     <link rel="preconnect" href="{{ asset('https://fonts.googleapis.com') }}">
     <link rel="preconnect" href="{{ asset('https://fonts.gstatic.com') }}" crossorigin>
     <link href="{{ asset('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap') }}"
