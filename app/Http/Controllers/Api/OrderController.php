@@ -22,51 +22,51 @@ class OrderController extends Controller
         $this->cartService = new CartService();
     }
 
-    public function store(Request $request): JsonResponse
-    {
-        if (!Hash::check($request->get('password'), auth()->user()->getAuthPassword())) {
-            return response()->json([
-                'message' => 'Введенный пароль недействителен',
-                'status' => false,
-            ]);
-        }
-
-        if ($this->cartService->isEmpty()) {
-            return response()->json([
-                'empty' => 'Вы ничего не добавили в корзину',
-                'status' => false
-            ]);
-        }
-
-        $order = Order::query()->create([
-            'user_id' => auth()->user()->id,
-            'total' => $this->cartService->getTotal(),
-        ]);
-
-        foreach ($this->cartService->get() as $item) {
-            OrderProduct::query()->create([
-                'order_id' => $order->id,
-                'product_id' => $item->id
-            ]);
-        }
-
-        $this->cartService->clear();
-
-        Mail::to(auth()->user()->email)->send(new OrderCreatedMail($order));
-        return response()->json([
-            'message', 'Заказ оформлен!',
-            'status' => true,
-        ]);
-    }
-
-    public function updateStatus(Request $request, $orderId): RedirectResponse
-    {
-        $order = Order::findOrFail($orderId);
-        $order->status = $request->input('orderStatus');
-        $order->save();
-
-        return back()->with('success', 'Статус заказа обновлен');
-    }
+//    public function store(Request $request): JsonResponse
+//    {
+//        if (!Hash::check($request->get('password'), auth()->user()->getAuthPassword())) {
+//            return response()->json([
+//                'message' => 'Введенный пароль недействителен',
+//                'status' => false,
+//            ]);
+//        }
+//
+//        if ($this->cartService->isEmpty()) {
+//            return response()->json([
+//                'empty' => 'Вы ничего не добавили в корзину',
+//                'status' => false
+//            ]);
+//        }
+//
+//        $order = Order::query()->create([
+//            'user_id' => auth()->user()->id,
+//            'total' => $this->cartService->getTotal(),
+//        ]);
+//
+//        foreach ($this->cartService->get() as $item) {
+//            OrderProduct::query()->create([
+//                'order_id' => $order->id,
+//                'product_id' => $item->id
+//            ]);
+//        }
+//
+//        $this->cartService->clear();
+//
+//        Mail::to(auth()->user()->email)->send(new OrderCreatedMail($order));
+//        return response()->json([
+//            'message', 'Заказ оформлен!',
+//            'status' => true,
+//        ]);
+//    }
+//
+//    public function updateStatus(Request $request, $orderId): RedirectResponse
+//    {
+//        $order = Order::findOrFail($orderId);
+//        $order->status = $request->input('orderStatus');
+//        $order->save();
+//
+//        return back()->with('success', 'Статус заказа обновлен');
+//    }
 
 //    public function deleteOrderProduct($orderId, $productId): RedirectResponse
 //    {

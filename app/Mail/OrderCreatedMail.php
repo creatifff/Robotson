@@ -16,7 +16,6 @@ class OrderCreatedMail extends Mailable
     use Queueable, SerializesModels;
 
     public Order $order;
-    public $futureDate;
 
     public function __construct(Order $order)
     {

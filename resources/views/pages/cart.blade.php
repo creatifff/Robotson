@@ -79,10 +79,10 @@
                         </div>
                         <div class="total__text">
                             <p>Итого:</p>
-                            <span style="white-space: nowrap">{{ $cart->getTotal() }}</span>
+                            <span style="white-space: nowrap">{{ $cart->getTotal() }} ₽</span>
                         </div>
-                        {{--                        <div class="total__text-shipping"></div>--}}
-                        <a class="cart__order-btn" href="{{ route('cart.createOrder') }}">К оформлению</a>
+                        <div class="total__text-shipping">Вы сможете оплатить заказ после получения реквизитов.</div>
+                        <a class="cart__order-btn" href="{{ route('cart.createOrder') }}">Оформить заказ</a>
                         <a class="clear__cart-btn" href="{{ route('cart.clear') }}">Очистить корзину</a>
                     </div>
                 </div>

@@ -30,10 +30,10 @@ class Order extends Model
     }
 
     // Форматирование цены в заказе
-    public function totalPrice(): string
-    {
-        return number_format($this->total, 0, ',', ' ') . ' ₽';
-    }
+//    public function totalPrice(): string
+//    {
+//        return number_format($this->total, 0, ',', ' ') . ' ₽';
+//    }
 
 
 }

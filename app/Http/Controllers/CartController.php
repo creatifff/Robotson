@@ -43,20 +43,20 @@ class CartController extends Controller
         return back();
     }
 
-    public function checkoutIndex(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-    {
-        $cart = $this->cartService;
-
-        return view('pages.order', compact('cart'));
-    }
+//    public function checkoutIndex(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+//    {
+//        $cart = $this->cartService;
+//
+//        return view('pages.order', compact('cart'));
+//    }
 
     public function createOrder(): RedirectResponse
     {
         if ($this->cartService->isEmpty()) {
-            return back()->withErrors(['empty', 'Корзина пуста']);
+            return back()->with(['message' => 'Корзина пуста']);
         }
         $order = Order::query()->create([
-            'user_id' => auth()->user()->getAuthIdentifier(), //->id
+            'user_id' => auth()->user()->id,
             'total' => $this->cartService->getTotal()
         ]);
 
@@ -66,13 +66,14 @@ class CartController extends Controller
                 'product_id' => $item->id
             ]);
         }
+        $this->cartService->clear();
 
         Mail::to(auth()->user()->email)->send(new OrderCreatedMail($order));
 
         return redirect()->route('page.home')->with('message' . 'Заказ создан!');
     }
 
-    public function checkout(Request $request): JsonResponse
+    public function store(Request $request): JsonResponse
     {
         if (!Hash::check($request->get('password'), auth()->user()->getAuthPassword())) {
             return response()->json([
@@ -103,10 +104,8 @@ class CartController extends Controller
 
         $this->cartService->clear();
 
-//        $user = auth()->user();
 
         Mail::to(auth()->user()->email)->send(new OrderCreatedMail($order));
-//        Mail::to($user->email)->send(new OrderCreatedMail($order));
 
         return response()->json([
             'message', 'Заказ оформлен!',

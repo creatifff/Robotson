@@ -11,12 +11,11 @@ use Throwable;
 class CartService implements CartInterface
 {
     /**
-     * @return string
+     * @return int
      */
-    public function getTotal(): string
+    public function getTotal(): int
     {
-        $total = array_reduce($this->get(), fn($total, $item) => $total += $item->price, 0);
-        return number_format($total, 0, ',', ' ') . ' ₽';
+        return array_reduce($this->get(), fn($total, $item) => $total += $item->price, 0);
     }
 
     /**

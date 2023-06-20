@@ -12,9 +12,9 @@ interface CartInterface
     public function get(): mixed;
 
     /**
-     * @return string
+     * @return int
      */
-    public function getTotal(): string;
+    public function getTotal(): int;
 
     /**
      * @return void
