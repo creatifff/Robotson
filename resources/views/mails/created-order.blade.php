@@ -141,9 +141,9 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="esd-block-text es-p15t es-p20b" align="left">
-                                                                <p style="font-size: 16px; color: #777777;">Lorem ipsum
-                                                                    dolor sit amet, consectetur adipisicing elit.
-                                                                    Praesentium iste ipsa numquam odio dolores, nam.</p>
+                                                                <p style="font-size: 16px; color: #0e0e0e;">
+                                                                    Вскоре наш менеджер свяжется с вами и обсудит детально заказ, доставку и оплату. Ожидайте звонка!
+                                                                </p>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -184,10 +184,10 @@
                                                                     <tbody>
                                                                     <tr>
                                                                         <td width="80%">
-                                                                            <h4>Order Confirmation #</h4>
+                                                                            <h4>Заказ #</h4>
                                                                         </td>
                                                                         <td width="20%">
-                                                                            <h4>2345678</h4>
+                                                                            <h4>1432</h4>
                                                                         </td>
                                                                     </tr>
                                                                     </tbody>
