@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-         Сидер категорий
+//         Сидер категорий
         Collection::query()->create([
             'name' => 'Роботы-гуманоиды',
             'image_path' => 'public/images/humanoids.jpg'
