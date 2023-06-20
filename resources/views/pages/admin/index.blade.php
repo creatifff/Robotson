@@ -1,5 +1,7 @@
 @extends('layout.admin')
 
+@section('meta-description', 'Личный кабинет в Robotson. Создайте свой аккаунт!')
+
 @section('title', 'Главная')
 
 @section('content')

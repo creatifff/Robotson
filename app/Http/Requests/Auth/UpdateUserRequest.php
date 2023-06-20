@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserRequest extends FormRequest
@@ -17,12 +18,12 @@ class UpdateUserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            'name' => 'required|regex:/^[А-Яа-яёЁ\s-]+$/iu',
+            'name' => 'required|regex:/^[А-Яа-яёЁ\s-]+$/iu|min:2',
             'surname' => 'nullable|regex:/^[А-Яа-яёЁ\s-]+$/iu',
             'middle_name' => 'nullable|regex:/^[А-Яа-яёЁ\s-]+$/iu',
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
@@ -37,11 +38,12 @@ class UpdateUserRequest extends FormRequest
         return [
             'name.required' => 'Введите ваше имя',
             'name.regex' => 'Только кириллица и пробел',
+            'name.min' => 'Слишком короткое имя',
             'surname.regex' => 'Только кириллица и пробел',
             'middle_name.regex' => 'Только кириллица и пробел',
             'phone_number.required' => 'Введите ваш номер телефона',
             'phone_number.regex' => 'Допустимы цифры 0-9 и символы',
-            'phone_number.min' => 'Номер должен состоять из 10 символов',
+            'phone_number.min' => 'Номер состоит минимум из 10 символов',
             'city.regex' => 'Только кириллица и пробел',
             'email.required' => 'Введите электронную почту',
             'email.email' => 'Неверный формат почты',

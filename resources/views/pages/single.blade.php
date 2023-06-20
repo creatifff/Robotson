@@ -1,5 +1,7 @@
 @extends('layout.layout')
 
+@section('meta-description', 'Robotson - магазин роботов от производителя. ' . $product->name . ' - ' . $product->text)
+
 @section('title', $product->name)
 
 <style>

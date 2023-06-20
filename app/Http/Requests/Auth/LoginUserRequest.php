@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginUserRequest extends FormRequest
@@ -17,7 +18,7 @@ class LoginUserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
     {
@@ -30,9 +31,9 @@ class LoginUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-          'email.required' => 'Введите ваш e-mail',
-          'email.email' => 'Неверный формат почты',
-          'password.required' => 'Введите пароль'
+            'email.required' => 'Введите ваш e-mail',
+            'email.email' => 'Неверный формат почты',
+            'password.required' => 'Введите пароль'
         ];
     }
 }

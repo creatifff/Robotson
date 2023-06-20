@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
 //        ]);
 //
 //
-//        // Сидер категорий
+        // Сидер категорий
 //        Collection::query()->create([
 //            'name' => 'Роботы-гуманоиды',
 //            'image_path' => 'public/images/humanoids.jpg'
@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
             'quantity' => 86,
             'price' => 110600,
             'is_published' => true,
-            'collection_id' => 2
+            'collection_id' => 1
         ]);
 
         ProductImage::query()->create([
@@ -147,7 +147,7 @@ class DatabaseSeeder extends Seeder
             'quantity' => 72,
             'price' => 70000,
             'is_published' => true,
-            'collection_id' => 7
+            'collection_id' => 2
         ]);
 
         ProductImage::query()->create([
@@ -216,7 +216,7 @@ class DatabaseSeeder extends Seeder
             'quantity' => 15,
             'price' => 205480,
             'is_published' => true,
-            'collection_id' => 5
+            'collection_id' => 3
         ]);
 
         ProductImage::query()->create([
@@ -250,7 +250,7 @@ It features an OAK-D-Lite 4K RGB autofocus camera.',
             'quantity' => 200,
             'price' => 100236,
             'is_published' => true,
-            'collection_id' => 6
+            'collection_id' => 4
         ]);
 
         ProductImage::query()->create([

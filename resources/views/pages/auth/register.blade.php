@@ -24,16 +24,6 @@
                         @enderror
                     </div>
                     <div class="form__input-column">
-                        <label for="surname">Фамилия *</label>
-                        <input type="text" class="form__input is-invalid" id="surname" value="{{ old('surname') }}"
-                               name="surname">
-                        @error('surname')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="form__input-column">
                         <label for="phone_number">Номер телефона *</label>
                         <input type="text" class="form__input is-invalid" id="phone_number"
                                value="{{ old('phone_number') }}" name="phone_number">
@@ -68,7 +58,7 @@
                     </div>
 
                     <label>
-                        <input class=" @error('rules') is-invalid @enderror" type="checkbox" name="rules">
+                        <input class="@error('rules') is-invalid @enderror" type="checkbox" name="rules">
                         Я принимаю правила регистрации и даю согласие на обработку своих данных *
                         @error('rules')
                         <div class="invalid-feedback">

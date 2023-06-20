@@ -56,7 +56,7 @@
         </table>
     @else
         <div class="orders__empty">
-            <p>Продуктов нет</p>
+            <p>Заявок на услуги не найдено</p>
         </div>
     @endif
 @endsection

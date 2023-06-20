@@ -34,7 +34,7 @@
 
     @else
         <div class="orders__empty">
-            <p>Категорий нет</p>
+            <p>Категорий не найдено</p>
         </div>
     @endif
     <div class="pagination">
