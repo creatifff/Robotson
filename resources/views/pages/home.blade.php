@@ -10,7 +10,7 @@
         <div class="intro__background">
             <video
                 class="background__video"
-                src="{{ asset('video/intro-video.mp4')}}"
+                src="video/intro-video.mp4"
                 autoplay
                 loop
                 muted
