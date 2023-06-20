@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'surname' => 'Назыров',
             'middle_name' => '',
             'city' => 'Казань',
-            'phone_number' => '+79274156060',
+            'phone_number' => '+78005553535',
             'email' => 'rossoroma@mail.ru',
             'password' => Hash::make('admin2001'),
             'image_path' => 'public/images/user-img-default.png',
@@ -38,17 +38,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'saulgoodman@bcs.com',
             'password' => Hash::make('654321'),
             'image_path' => 'public/images/saul.jpg',
-            'role' => 'user',
-        ]);
-        User::query()->create([
-            'name' => 'Уолтер',
-            'surname' => 'Уайт',
-            'middle_name' => 'Хартвелл',
-            'city' => 'Альбукерке',
-            'phone_number' => '1-505-842-5662',
-            'email' => 'walterhwhite@bb.com',
-            'password' => Hash::make('123456'),
-            'image_path' => 'public/images/user-img-default.png',
             'role' => 'user',
         ]);
 
