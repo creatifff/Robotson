@@ -1,2 +1,3 @@
-    RewriteEngine On
-    RewriteRule ^ public/index.php [L]
+RewriteEngine on
+RewriteRule ^$ public/ [L]
+RewriteRule ((?s).*) public/$1 [L]
