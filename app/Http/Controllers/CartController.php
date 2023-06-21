@@ -70,24 +70,24 @@ class CartController extends Controller
 
         Mail::to(auth()->user()->email)->send(new OrderCreatedMail($order));
 
-        return redirect()->route('page.home')->with('message' . 'Заказ создан!');
+        return redirect()->route('page.home')->with(['message' => 'Заказ оформлен! Скоро мы с вами свяжемся.']);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): RedirectResponse
     {
-        if (!Hash::check($request->get('password'), auth()->user()->getAuthPassword())) {
-            return response()->json([
-                'message' => 'Введенный пароль недействителен для вашего аккаунта',
-                'status' => false
-            ]);
-        }
+//        if (!Hash::check($request->get('password'), auth()->user()->getAuthPassword())) {
+//            return response()->json([
+//                'message' => 'Введенный пароль недействителен для вашего аккаунта',
+//                'status' => false
+//            ]);
+//        }
 
-        if ($this->cartService->isEmpty()) {
-            return response()->json([
-                'empty' => 'Вы ничего не добавили в корзину',
-                'status' => false
-            ]);
-        }
+//        if ($this->cartService->isEmpty()) {
+//            return response()->json([
+//                'empty' => 'Вы ничего не добавили в корзину',
+//                'status' => false
+//            ]);
+//        }
 
         $order = Order::query()->create([
             'user_id' => auth()->user()->getAuthIdentifier(),
@@ -107,11 +107,13 @@ class CartController extends Controller
 
         Mail::to(auth()->user()->email)->send(new OrderCreatedMail($order));
 
-        return response()->json([
-            'message', 'Заказ оформлен!',
-            'status' => true,
-            'redirect_url' => route('page.home')
-        ]);
+//        return response()->json([
+//            'message', 'Заказ оформлен!',
+//            'status' => true,
+//            'redirect_url' => route('page.home')
+//        ]);
+
+        return redirect()->route('page.home')->with(['message' => 'Заказ оформлен! Скоро мы с вами свяжемся.']);
 
     }
 

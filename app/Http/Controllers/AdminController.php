@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auth\UpdateUserRequest;
 use App\Models\Collection;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\Request;
 use App\Models\User;
@@ -125,10 +126,10 @@ class AdminController extends Controller
     public function showOrders(Request $request): View|\Illuminate\Foundation\Application|Factory|Application
     {
         $orders = Order::paginate(5);
-        $products = Product::all();
-        $orderStatuses = ['В обработке', 'Принят', 'Отменен', 'Отправлен', 'Завершен'];
+        $orderProducts = OrderProduct::all();
 
 
-        return view('pages.admin.orders', compact('orders', 'products', 'orderStatuses'));
+
+        return view('pages.admin.orders', compact('orders', 'orderProducts'));
     }
 }

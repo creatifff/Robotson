@@ -14,6 +14,16 @@ class OrderController extends Controller
             'status' => $request->get('status')
         ]);
 
-        return back();
+        return back()->with(['message' => "Статус заказа №$order->id изменен."]);
+    }
+
+    public function deleteOrder($id): RedirectResponse
+    {
+        $order = Order::where('id', $id)->firstOrFail();
+        $order->delete();
+
+        return redirect()
+            ->route('admin.showOrders')
+            ->with(['message' => "Заказ №$order->id отменен."]);
     }
 }

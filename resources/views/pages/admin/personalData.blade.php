@@ -69,7 +69,7 @@
                 </div>
                 <div class="form__input-column">
                     <label for="phone_number">Номер телефона</label>
-                    <input disabled type="text" class="form__input is-invalid" id="phone_number"
+                    <input type="text" class="form__input is-invalid" id="phone_number"
                            value="{{ auth()->user()->phone_number }}"
                            name="phone_number">
                     @error('phone_number')
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form__input-column">
                     <label for="email">E-mail</label>
-                    <input disabled type="text" class="form__input is-invalid" id="email" value="{{ auth()->user()->email }}"
+                    <input type="text" class="form__input is-invalid" id="email" value="{{ auth()->user()->email }}"
                            name="email">
                     @error('email')
                     <div class="invalid-feedback">

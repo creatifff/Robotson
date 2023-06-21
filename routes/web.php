@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequestController;
 use App\Http\Middleware\AdminMiddleware;
@@ -147,9 +147,10 @@ Route::group([
     Route::group([
         'controller' => OrderController::class,
         'as' => 'order.',
-        'prefix' => '/orders',
+        'prefix' => '/order',
     ], function () {
-        Route::post('/{orderId}/product/{productId}/delete', 'deleteOrderProduct')->name('deleteOrderProduct');
+        Route::delete('/delete/{order:id}', 'deleteOrder')->name('deleteOrder');
+        Route::get('/toggle/{order:id}', 'changeStatus')->name('toggle');
     });
 
 });

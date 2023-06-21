@@ -58,7 +58,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ route('account.index') }}">Главная</a></li>
                                 <li><a class="dropdown-item" href="{{ route('account.personalData') }}">Мои данные</a></li>
-                                <li><a class="dropdown-item" href="#">Мои заказы</a></li>
+                                <li><a class="dropdown-item" href="{{ route('account.orders') }}">Мои заказы</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -77,7 +77,7 @@
                                 <li><a class="dropdown-item" href="{{ route('admin.personalData') }}">Мои данные</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.showProducts') }}">Продукты</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.showCollections') }}">Категории</a></li>
-                                <li><a class="dropdown-item" href="#">Заказы</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.showOrders') }}">Заказы</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.showRequests') }}">Заявки</a></li>
                                 <li>
                                     <hr class="dropdown-divider">

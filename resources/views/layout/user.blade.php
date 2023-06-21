@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="@yield('meta-description')">
     <meta name="theme-color" content="#0e0e0e"/>
+    <link type="image/x-icon" href="favicon.ico" rel="shortcut icon">
+    <link type="Image/x-icon" href="favicon.ico" rel="icon">
     <link rel="preconnect" href="{{ asset('https://fonts.googleapis.com') }}">
     <link rel="preconnect" href="{{ asset('https://fonts.gstatic.com') }}" crossorigin>
     <link href="{{ asset('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap') }}"
