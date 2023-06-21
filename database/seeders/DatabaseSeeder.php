@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         User::query()->create([
             'name' => 'Сол',
             'surname' => 'Гудман',
-            'middle_name' => '',
+            'middle_name' => 'z',
             'city' => 'Сисеро',
             'phone_number' => '1-505-842-5662',
             'email' => 'saulgoodman@bcs.com',
