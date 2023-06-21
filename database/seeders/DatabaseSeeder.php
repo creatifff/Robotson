@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'surname' => 'Назыров',
             'middle_name' => '',
             'city' => 'Казань',
-            'phone_number' => '+79274156060',
+            'phone_number' => '+79274156062',
             'email' => 'rossoroma@mail.ru',
             'password' => Hash::make('admin2001'),
             'image_path' => 'public/images/user-img-default.png',
